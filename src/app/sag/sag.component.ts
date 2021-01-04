@@ -6,6 +6,7 @@ import { ActivatedRoute, Router, } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { NavComponent } from '../nav/nav.component';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 export interface DialogDataSagFront {
   sagEIdealMinFront:number;
@@ -26,7 +27,29 @@ export interface DialogDataSagRear {
 @Component({
   selector: 'app-sag',
   templateUrl: './sag.component.html',
-  styleUrls: ['./sag.component.css']
+  styleUrls: ['./sag.component.css'],
+  animations: [
+    trigger('animate', [
+      state('*', style({
+        transform: 'translate3D(0px, 0px, 0px)',
+        opacity: 1
+      })),
+      transition('void => *', [
+        style({opacity: 0,
+          transform: 'translate3D(0px, 150px, 0px)',
+        }),
+        animate('0.3s 0s ease-out'),
+      ])
+    ]),
+    trigger('flip', [
+      transition('void => *', [
+        style({opacity: 0,
+          transform: 'rotateY(180deg)',
+        }),
+        animate('0.3s 0s ease-out'),
+      ])
+    ])  
+  ],
 })
 export class SagComponent implements OnInit {
 

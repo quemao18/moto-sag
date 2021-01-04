@@ -1,5 +1,5 @@
-<div fxLayout="row"  fxLayoutGap="22px" class="center"  [style.margin-top]="'22px'">
-    <mat-card *ngIf="type=='rear'" class="example-card">
+<div [@animate] fxLayout="row"  fxLayoutGap="22px" class="center"  [style.margin-top]="'22px'">
+    <mat-card *ngIf="type==='rear'" class="example-card">
         <mat-card-header>
           <!-- <div mat-card-avatar class="example-header-image"></div> -->
           <mat-card-title>SAG Trasero</mat-card-title>
@@ -68,7 +68,7 @@
         </mat-card-actions>
       </mat-card>
     <br>
-      <mat-card *ngIf="dataSourceRear.sagE!='' || dataSourceRear.sagE=='0' && type=='rear'" class="example-card">
+      <mat-card [@flip] *ngIf="(dataSourceRear.sagE!='' || dataSourceRear.sagE=='0') && type==='rear'" class="example-card">
         <mat-card-header>
             <!-- <div mat-card-avatar class="example-header-image"></div> -->
             <mat-card-title>Resultados SAG Trasero</mat-card-title>
@@ -93,102 +93,102 @@
             </mat-grid-list>
           </mat-card-content>
       </mat-card>
-    </div>
-      <!-- SAG DELANTERO -->
-    <div fxLayout="row"  fxLayoutGap="22px" class="center"  [style.margin-top]="'-22px'">
+</div>
+    <!-- SAG DELANTERO -->
+<div [@animate] fxLayout="row"  fxLayoutGap="22px" class="center"  [style.margin-top]="'-22px'">
 
-      <mat-card *ngIf="type=='front'" class="example-card">
-        <mat-card-header>
+    <mat-card *ngIf="type==='front'" class="example-card">
+      <mat-card-header>
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <mat-card-title>SAG Delantero</mat-card-title>
+        <mat-card-subtitle>Cálculo del SAG Delantero</mat-card-subtitle>
+        <span class="example-spacer"></span>
+        <button mat-icon-button>
+          <mat-icon (click)="openDialogSettingSagFront()" class="example-icon" aria-hidden="false" aria-label="Settings">settings</mat-icon>
+        </button>
+      </mat-card-header>
+      <img mat-card-image src="./assets/img/front2.png" alt="SAG">
+      <mat-card-content>
+          <mat-card-title>Introduce las medidas</mat-card-title>
+          <form [formGroup]="sagFrontForm" class="example-form">
+            <table class="example-full-width responsive" cellspacing="0">
+              <tr>
+                  <td>
+                      <mat-form-field class="example-full-width">
+                          <mat-label>Medida A</mat-label>
+                          <input type="tel" matInput formControlName="raFormControl" [errorStateMatcher]="matcher"
+                                  placeholder="Ejm. 600">
+                          <span matSuffix>mm</span>
+                          <mat-hint>Medida montada en el banco!</mat-hint>
+                          <mat-error *ngIf="sagRearForm.get('raFormControl').hasError('pattern')" >
+                              Introduce un valor válido
+                          </mat-error>
+                          <mat-error *ngIf="sagRearForm.get('raFormControl').hasError('required')">
+                              Medida A es <strong>requerida</strong>
+                          </mat-error>
+                      </mat-form-field>
+                  </td>
+                  <td>
+                      <mat-form-field class="example-full-width">
+                          <mat-label>Medida B</mat-label>
+                          <input type="tel" matInput formControlName="rbFormControl" [errorStateMatcher]="matcher"
+                                  placeholder="Ejm. 570">
+                          <span matSuffix>mm</span>
+                          <mat-hint>Medida en el suelo!</mat-hint>
+                          <mat-error *ngIf="sagRearForm.get('rbFormControl').hasError('pattern')" >
+                              Introduce un valor válido
+                          </mat-error>
+                          <mat-error *ngIf="sagRearForm.get('rbFormControl').hasError('required')">
+                              Medida B es <strong>requerida</strong>
+                          </mat-error>
+                      </mat-form-field>
+                  </td>
+                  <td>
+                      <mat-form-field class="example-full-width">
+                          <mat-label>Medida C</mat-label>
+                          <input type="tel" matInput formControlName="rcFormControl" [errorStateMatcher]="matcher"
+                                  placeholder="Ejm. 540">
+                          <span matSuffix>mm</span>
+                          <mat-hint>Medida con el piloto y su equipo!</mat-hint>
+                          <mat-error *ngIf="sagRearForm.get('rcFormControl').hasError('pattern')" >
+                              Introduce un valor válido
+                          </mat-error>
+                      </mat-form-field>
+                  </td>
+                  
+              </tr>
+              </table>
+          </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button mat-raised-button color="primary" (click)="getSagFront();" [disabled]="errorSagEFront==null && sagFrontForm.invalid" >Calcular</button>
+        <button mat-button (click)="sagFrontForm.reset(); dataSourceFront.sagE=''; errorSagEFront=null">Borrar</button>
+      </mat-card-actions>
+    </mat-card>
+  <br>
+    <mat-card [@flip] *ngIf="(dataSourceFront.sagE!='' || dataSourceFront.sagE=='0') && type==='front'" class="example-card">
+      <mat-card-header>
           <!-- <div mat-card-avatar class="example-header-image"></div> -->
-          <mat-card-title>SAG Delantero</mat-card-title>
-          <mat-card-subtitle>Cálculo del SAG Delantero</mat-card-subtitle>
-          <span class="example-spacer"></span>
-          <button mat-icon-button>
-            <mat-icon (click)="openDialogSettingSagFront()" class="example-icon" aria-hidden="false" aria-label="Settings">settings</mat-icon>
-          </button>
+          <mat-card-title>Resultados SAG Delantero</mat-card-title>
+          <mat-card-subtitle>Valores obtenidos</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image src="./assets/img/front2.png" alt="SAG">
         <mat-card-content>
-            <mat-card-title>Introduce las medidas</mat-card-title>
-            <form [formGroup]="sagFrontForm" class="example-form">
-              <table class="example-full-width responsive" cellspacing="0">
-                <tr>
-                    <td>
-                        <mat-form-field class="example-full-width">
-                            <mat-label>Medida A</mat-label>
-                            <input type="tel" matInput formControlName="raFormControl" [errorStateMatcher]="matcher"
-                                    placeholder="Ejm. 600">
-                            <span matSuffix>mm</span>
-                            <mat-hint>Medida montada en el banco!</mat-hint>
-                            <mat-error *ngIf="sagRearForm.get('raFormControl').hasError('pattern')" >
-                                Introduce un valor válido
-                            </mat-error>
-                            <mat-error *ngIf="sagRearForm.get('raFormControl').hasError('required')">
-                                Medida A es <strong>requerida</strong>
-                            </mat-error>
-                        </mat-form-field>
-                    </td>
-                    <td>
-                        <mat-form-field class="example-full-width">
-                            <mat-label>Medida B</mat-label>
-                            <input type="tel" matInput formControlName="rbFormControl" [errorStateMatcher]="matcher"
-                                    placeholder="Ejm. 570">
-                            <span matSuffix>mm</span>
-                            <mat-hint>Medida en el suelo!</mat-hint>
-                            <mat-error *ngIf="sagRearForm.get('rbFormControl').hasError('pattern')" >
-                                Introduce un valor válido
-                            </mat-error>
-                            <mat-error *ngIf="sagRearForm.get('rbFormControl').hasError('required')">
-                                Medida B es <strong>requerida</strong>
-                            </mat-error>
-                        </mat-form-field>
-                    </td>
-                    <td>
-                        <mat-form-field class="example-full-width">
-                            <mat-label>Medida C</mat-label>
-                            <input type="tel" matInput formControlName="rcFormControl" [errorStateMatcher]="matcher"
-                                    placeholder="Ejm. 540">
-                            <span matSuffix>mm</span>
-                            <mat-hint>Medida con el piloto y su equipo!</mat-hint>
-                            <mat-error *ngIf="sagRearForm.get('rcFormControl').hasError('pattern')" >
-                                Introduce un valor válido
-                            </mat-error>
-                        </mat-form-field>
-                    </td>
-                   
-                </tr>
-                </table>
-            </form>
+          <mat-grid-list [cols]="mobileQuery.matches ? 1 : 2" [rowHeight]="mobileQuery.matches ? '1:0.2' : '1:0.3'" >
+              <mat-grid-tile
+              [style.background] = "dataSourceFront.errorE ? '#FFCDD2':'#DCEDC8'"
+              [style.color]="dataSourceFront.errorE ? 'red': 'green'">
+              <div class="text-inside-grid">
+                  <b>SAG Estático: {{dataSourceFront.sagE}}mm</b><br>{{dataSourceFront.msgE}} 
+              </div>
+              </mat-grid-tile>
+              <mat-grid-tile 
+              [style.background] = "dataSourceFront.errorD ? '#FFCDD2':'#DCEDC8'"
+              [style.color]="dataSourceFront.errorD ? 'red': 'green'">
+              <div class="text-inside-grid">
+                  <b>SAG Dinámico: {{dataSourceFront.sagD}}mm</b><br>{{dataSourceFront.msgD}}
+              </div>
+              </mat-grid-tile>
+          </mat-grid-list>
         </mat-card-content>
-        <mat-card-actions>
-          <button mat-button mat-raised-button color="primary" (click)="getSagFront();" [disabled]="errorSagEFront==null && sagFrontForm.invalid" >Calcular</button>
-          <button mat-button (click)="sagFrontForm.reset(); dataSourceFront.sagE=''; errorSagEFront=null">Borrar</button>
-        </mat-card-actions>
-      </mat-card>
-    <br>
-      <mat-card *ngIf="dataSourceFront.sagE!='' && type=='front'" class="example-card">
-        <mat-card-header>
-            <!-- <div mat-card-avatar class="example-header-image"></div> -->
-            <mat-card-title>Resultados SAG Delantero</mat-card-title>
-            <mat-card-subtitle>Valores obtenidos</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <mat-grid-list [cols]="mobileQuery.matches ? 1 : 2" [rowHeight]="mobileQuery.matches ? '1:0.2' : '1:0.3'" >
-                <mat-grid-tile
-                [style.background] = "dataSourceFront.errorE ? '#FFCDD2':'#DCEDC8'"
-                [style.color]="dataSourceFront.errorE ? 'red': 'green'">
-                <div class="text-inside-grid">
-                    <b>SAG Estático: {{dataSourceFront.sagE}}mm</b><br>{{dataSourceFront.msgE}} 
-                </div>
-                </mat-grid-tile>
-                <mat-grid-tile 
-                [style.background] = "dataSourceFront.errorD ? '#FFCDD2':'#DCEDC8'"
-                [style.color]="dataSourceFront.errorD ? 'red': 'green'">
-                <div class="text-inside-grid">
-                   <b>SAG Dinámico: {{dataSourceFront.sagD}}mm</b><br>{{dataSourceFront.msgD}}
-                </div>
-                </mat-grid-tile>
-            </mat-grid-list>
-          </mat-card-content>
-      </mat-card>
-    </div>
+    </mat-card>
+</div>
