@@ -1,20 +1,20 @@
-<mat-card-title>SAG Trasero recomendado</mat-card-title>
-<mat-card-subtitle>Verifica el manual para el SAG correcto</mat-card-subtitle>
+<mat-card-title>{{ 'SAG.RECOMENDED_R' | translate }}</mat-card-title>
+<mat-card-subtitle>{{ 'SAG.MANUAL' | translate }}</mat-card-subtitle>
 <form >
 <div mat-dialog-content>
-  <h3 style="font-weight: 600;">SAG Estático:</h3>
+  <h3 style="font-weight: 600;">{{ 'SAG.STATIC' | translate }}:</h3>
     <table class="" cellspacing="0">
         <tr>
             <td>
                 <mat-form-field>
-                    <mat-label>Mínimo</mat-label>
+                    <mat-label>{{ 'SAG.MIN' | translate }}</mat-label>
                     <input type="tel" matInput [(ngModel)]="data.sagEIdealMinRear" name="sagEIdealMinRear" required>
                     <span matSuffix>mm</span>
                 </mat-form-field>
             </td>
             <td>
                 <mat-form-field>
-                    <mat-label>Máximo</mat-label>
+                    <mat-label>{{ 'SAG.MAX' | translate }}</mat-label>
                     <input type="tel" matInput [(ngModel)]="data.sagEIdealMaxRear" name="sagEIdealMaxRear" required>
                     <span matSuffix>mm</span>
                 </mat-form-field>
@@ -22,19 +22,19 @@
         </tr>
     
     </table>
-  <h3 style="font-weight: 600;">SAG Dinámico:</h3>
+  <h3 style="font-weight: 600;">{{ 'SAG.DINAMIC' | translate }}:</h3>
     <table class="" cellspacing="0">
         <tr>
             <td>
                 <mat-form-field>
-                    <mat-label>Mínimo</mat-label>
+                    <mat-label>{{ 'SAG.MIN' | translate }}</mat-label>
                     <input type="tel" matInput [(ngModel)]="data.sagDIdealMinRear" name="sagDIdealMinRear" required>
                     <span matSuffix>mm</span>
                 </mat-form-field>
             </td>
             <td>
                 <mat-form-field>
-                    <mat-label>Máximo</mat-label>
+                    <mat-label>{{ 'SAG.MAX' | translate }}</mat-label>
                     <input type="tel" matInput [(ngModel)]="data.sagDIdealMaxRear" name="sagDIdealMaxRear" required>
                     <span matSuffix>mm</span>
                 </mat-form-field>
@@ -46,7 +46,7 @@
 </div>
 </form>
 <div mat-dialog-actions>
-  <button mat-button [disabled]="check(data)" mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>Aplicar</button>
-  <button mat-button (click)="onNoClick()">Cerrar</button>
+  <button mat-button [disabled]="check(data)" mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>{{ 'SAG.SAVE' | translate }}</button>
+  <button mat-button (click)="onNoClick()">{{ 'SAG.CLOSE' | translate }}</button>
 </div>
 

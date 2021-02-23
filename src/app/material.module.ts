@@ -10,8 +10,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+
 
 const modules = [
   CommonModule,
@@ -25,7 +27,8 @@ const modules = [
   MatGridListModule,
   MatSnackBarModule,
   MatDialogModule,
-  MatFormFieldModule 
+  MatFormFieldModule,
+  MatSelectModule
 ];
 
 
