@@ -6,12 +6,12 @@
   <h1 class="">{{name}}</h1>
 
   <span class="example-spacer"></span>
-  <mat-form-field style="width: 50px; text-align: center;">
+  <mat-form-field style="width: 50px; text-align: center; margin-right: 5px;">
   <!-- <mat-label>Language</mat-label> -->
   <mat-select [(value)]="lang" #langSelect (selectionChange)="translate.use(langSelect.value)">
-    <mat-option *ngFor="let lang of translate.getLangs()" [value]="lang" >{{ lang }}</mat-option>
+    <mat-option *ngFor="let lang of translate.getLangs()" [value]="lang" >{{ lang | uppercase }}</mat-option>
   </mat-select>
-  </mat-form-field>
+  </mat-form-field> 
   <button mat-icon-button (click)="dark=!dark">
     <mat-icon class="example-icon" aria-hidden="false" aria-label="Change theme">{{dark ? 'wb_sunny':'nights_stay'}}</mat-icon>
   </button>
