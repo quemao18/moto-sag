@@ -14,14 +14,20 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { VersionCheckService } from './services/version-check.service';
-import { HttpClientModule } from '@angular/common/http';
-
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 const routes: Routes = [  
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'sag/:type', component: SagComponent },
 ];
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 
 @NgModule({
   imports: [
@@ -34,7 +40,14 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MaterialModule,
     LayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   entryComponents: [
     AppComponent,

@@ -2,46 +2,45 @@
 <mat-card class="example-card">
     <mat-card-header>
       <!-- <div mat-card-avatar class="example-header-image"></div> -->
-      <mat-card-title>SAG (Shock Absorber Group)</mat-card-title>
-      <mat-card-subtitle>Explicación del SAG</mat-card-subtitle>
+      <mat-card-title>{{ 'HOME.TITLE' | translate }}</mat-card-title>
+      <mat-card-subtitle>{{ 'HOME.SUB_TITLE' | translate }}</mat-card-subtitle>
     </mat-card-header>
-    <h2 class="mat-h2">¿Qué es el SAG?</h2>
-    <p>Sag es el hundimiento de los amortiguadores montado en la moto, con todo su equipo. 
-      Tenerlo correctamente ajustado garantiza que los amortiguadores no sean ni demasiado rígidos ni demasiado blandos.</p>
-    <h3 class="subheading-2">Lo primero que hay que hacer es tomar las medidas de las imagenes.</h3>
+    <h2 class="mat-h2">{{ 'HOME.WHAT_IS' | translate }}</h2>
+    <p>{{ 'HOME.EXPLANATION' | translate }}</p>
+    <h3 class="subheading-2">{{ 'HOME.EXPLANATION_1' | translate }}</h3>
     
-    <img height="70%" mat-card-image src="./assets/img/rear2.png" alt="SAG trasero">
-    <img height="70%" mat-card-image src="./assets/img/front2.png" alt="SAG delantero">
+    <img height="70%" mat-card-image src="./assets/img/rear2.png" alt="{{ 'SAG.REAR' | translate }}">
+    <img height="70%" mat-card-image src="./assets/img/front2.png" alt="{{ 'SAG.FRONT' | translate }}">
     <mat-card-content>
        
-        <p><strong>En el banco</strong></p> 
-        <p>RA => Rear A, Medida trasera con la moto montada en un banco.</p>
-        <p>FA => Front A, Medida delantera con la moto montada en un banco.</p>
+        <p><strong>{{ 'SAG.BENCH' | translate }}</strong></p> 
+        <p>{{ 'SAG.BENCH_R' | translate }}</p>
+        <p>{{ 'SAG.BENCH_F' | translate }}</p>
 
-        <p><strong>En el suelo</strong></p>  
-        <p>RB => Rear B, Medida trasera con la moto en el suelo.</p>
-        <p>FB => Front B, Medida delantera con la moto en el suelo.</p>
+        <p><strong>{{ 'SAG.GROUND' | translate }}</strong></p>  
+        <p>{{ 'SAG.GROUND_R' | translate }}</p>
+        <p>{{ 'SAG.GROUND_F' | translate }}</p>
 
-        <p><strong>Con piloto</strong></p>
-        <p>RC => Rear C, Medida trasera con el piloto montado en la moto, deberia tener todo el equipo.</p>
-        <p>FC => Front C, Medida delantera con el piloto montado en la moto, deber&iacute;a tener todo el equipo.</p>
-        <p><strong>Cálculo del SAG</strong></p>
-        <p> SAG Est&aacute;tico Trasero<br>RA - RB => normalmente entre 30mm y 40mm <b>(KTM normalmente entre 33mm y 35mm)</b></p>
-        <p> SAG Est&aacute;tico delantero<br>FA - FB => normalmente entre 30mm y - 40mm</p>
-        <p> SAG Din&aacute;mico Trasero<br>RA - RC => normalmente entre 100mm y - 110mm <b>(KTM normalmente entre 105mm y 115mm)</b></p>
-        <p> SAG Din&aacute;mico delantero<br>FA - FC => normalmente entre 60mm y 70mm</p>
-        <p><strong>Ejemplo 1</strong></p>
-        <p>RA = 600,  RB = 550,  RC = 480</p><p>SAG Est&aacute;tico => RA - RB = 600-550 = 50mm (aumentar precarga, apretar resorte)</p><p>SAG Din&aacute;mico => RA - RC = 600-480 = 120mm (aumentar precarga, apretar resorte)</p>
-        <p><strong>Ejemplo 2</strong></p>
-        <p>RA = 600,  RB = 580,  RC = 530</p><p>SAG Est&aacute;tico => RA - RB = 600-580 = 20mm (quitar precarga, aflojar resorte)</p><p>SAG Din&aacute;mico => RA - RC = 600-530 = 70mm (quitar precarga, aflojar resorte)</p>
-        <p><strong>Ejemplo 3</strong></p>
-        <p>RA = 600,  RB = 565,  RC = 495</p><p>SAG Est&aacute;tico => RA - RB = 600-565 = 35mm (precarga correcta)</p><p>SAG Din&aacute;mico => RA - RC = 600-495 = 105mm (precarga correcta)</p>
+        <p><strong>{{ 'SAG.RIDER' | translate }}</strong></p>
+        <p>{{ 'SAG.RIDER_R' | translate }}</p>
+        <p>{{ 'SAG.RIDER_F' | translate }}</p>
+        <p><strong>{{ 'SAG.CALCULATE' | translate }}</strong></p>
+        <p>{{ 'SAG.STATIC_R' | translate }}<br>{{ 'SAG.CALCULATE_SR' | translate }} <b>{{ 'SAG.KTM_STATIC_R' | translate }}</b></p>
+        <p>{{ 'SAG.STATIC_F' | translate }}<br>{{ 'SAG.CALCULATE_SF' | translate }}</p>
+        <p>{{ 'SAG.DINAMIC_R' | translate }}<br>{{ 'SAG.CALCULATE_DR' | translate }} <b>{{ 'SAG.KTM_DINAMIC_R' | translate }}</b></p>
+        <p>{{ 'SAG.DINAMIC_F' | translate }}<br>{{ 'SAG.CALCULATE_DF' | translate }}</p>
+        <p><strong>{{ 'HOME.SAMPLE_1' | translate }}</strong></p>
+        <p>{{ 'HOME.SAMPLE_1_TEXT_1' | translate }}</p><p> {{ 'HOME.SAMPLE_1_TEXT_2' | translate }}</p><p> {{ 'HOME.SAMPLE_1_TEXT_3' | translate }}</p>
+        <p><strong>{{ 'HOME.SAMPLE_2' | translate }}</strong></p>
+        <p>{{ 'HOME.SAMPLE_2_TEXT_1' | translate }}</p><p> {{ 'HOME.SAMPLE_2_TEXT_2' | translate }}</p><p> {{ 'HOME.SAMPLE_2_TEXT_3' | translate }}</p>
+        <p><strong>{{ 'HOME.SAMPLE_3' | translate }}</strong></p>
+        <p>{{ 'HOME.SAMPLE_3_TEXT_1' | translate }}</p><p> {{ 'HOME.SAMPLE_3_TEXT_3' | translate }}</p><p> {{ 'HOME.SAMPLE_3_TEXT_3' | translate }}</p>
 
     </mat-card-content>
     <mat-card-actions>
-      <p style="margin-left: 10px; font-weight: bold;font-size: larger;">Empezar a calcular</p>
-      <button mat-button color="primary" routerLink="/sag/front">SAG Delantero</button>
-      <button mat-button color="primary" routerLink="/sag/rear">SAG Trasero</button>
+      <p style="margin-left: 10px; font-weight: bold;font-size: larger;">{{ 'SAG.START' | translate }}</p>
+      <button mat-button color="primary" routerLink="/sag/front">{{ 'SAG.FRONT' | translate }}</button>
+      <button mat-button color="primary" routerLink="/sag/rear">{{ 'SAG.REAR' | translate }}</button>
     </mat-card-actions>
   </mat-card>
 <br>
