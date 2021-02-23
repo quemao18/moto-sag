@@ -69,9 +69,9 @@ export class SagComponent implements OnInit {
   errorSagEFront:string;
   errorSagDFront:string;
 
-  msgMorePre =  "Aumentar precarga, apretar/cambiar resorte";
-  msgLessPre =  "Quitar precarga, aflojar/cambiar resorte";
-  msgOkPre = "Precarga correcta";
+  msgMorePre =  "SAG.MORE_PRE";
+  msgLessPre =  "SAG.LESS_PRE";
+  msgOkPre = "SAG.OK_PRE";
 
   dataSourceFront: any = {
     sagE:'',

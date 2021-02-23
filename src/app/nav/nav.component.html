@@ -6,7 +6,12 @@
   <h1 class="">{{name}}</h1>
 
   <span class="example-spacer"></span>
-  
+  <mat-form-field style="width: 50px; text-align: center;">
+  <!-- <mat-label>Language</mat-label> -->
+  <mat-select [(value)]="lang" #langSelect (selectionChange)="translate.use(langSelect.value)">
+    <mat-option *ngFor="let lang of translate.getLangs()" [value]="lang" >{{ lang }}</mat-option>
+  </mat-select>
+  </mat-form-field>
   <button mat-icon-button (click)="dark=!dark">
     <mat-icon class="example-icon" aria-hidden="false" aria-label="Change theme">{{dark ? 'wb_sunny':'nights_stay'}}</mat-icon>
   </button>
@@ -20,12 +25,12 @@
     [style.marginTop.px]="mobileQuery.matches ? 0 : 0"
     [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <mat-nav-list>
-        <a (click)="mobileQuery.matches ? snav.close() : ''"  mat-list-item routerLinkActive="active" routerLink="/home" href="#">Información</a>
-        <a (click)="mobileQuery.matches ? snav.close() : ''" mat-list-item routerLinkActive="active" routerLink="/sag/front" href="#">SAG Delantero</a>
-        <a (click)="mobileQuery.matches ? snav.close() : ''" mat-list-item routerLinkActive="active" routerLink="/sag/rear" href="#">SAG Trasero</a>
+        <a (click)="mobileQuery.matches ? snav.close() : ''"  mat-list-item routerLinkActive="active" routerLink="/home" href="#">{{ 'HOME.INFO' | translate }}</a>
+        <a (click)="mobileQuery.matches ? snav.close() : ''" mat-list-item routerLinkActive="active" routerLink="/sag/front" href="#">{{ 'SAG.FRONT' | translate }}</a>
+        <a (click)="mobileQuery.matches ? snav.close() : ''" mat-list-item routerLinkActive="active" routerLink="/sag/rear" href="#">{{ 'SAG.REAR' | translate }}</a>
         <footer class="footer2 "> 
           <!-- By <a [style.color]="dark? 'white':''" target="blank" href="https://github.com/quemao18">@quemao18</a> -->
-          <a [style.color]="dark? 'white':''" target="blank" href="https://paypal.me/quemao18">Regálame un Café</a>
+          <a [style.color]="dark? 'white':''" target="blank" href="https://paypal.me/quemao18">{{ 'HOME.PAYPAL_TEXT' | translate }}</a>
         </footer>
       </mat-nav-list>
     </mat-sidenav>
