@@ -32,7 +32,7 @@ export class NavComponent implements OnDestroy {
             this.snav.close();
         });
 
-        translate.addLangs(['en', 'es']);
+        translate.addLangs(['en', 'es', 'it', 'fr']);
         translate.setDefaultLang('en');
         
         const browserLang = translate.getBrowserLang();

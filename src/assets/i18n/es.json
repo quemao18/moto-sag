@@ -2,7 +2,7 @@
 {
     "HOME": {
         "TITLE": "SAG (Shock Absorber Group)",
-        "SUB_TITLE": "Explicación del SAG",
+        "SUB_TITLE": "Explicación del SAG.",
         "INFO": "Información",
         "WHAT_IS": "¿Qué es el SAG?",
         "EXPLANATION": "Sag es el hundimiento de los amortiguadores montado en la moto, con todo su equipo. Tenerlo correctamente ajustado garantiza que los amortiguadores no sean ni demasiado rígidos ni demasiado blandos.",
@@ -33,8 +33,8 @@
         "RIDER_F": "FC => Front C, Medida delantera con el piloto montado en la moto, debería tener todo el equipo.",
         "CALCULATE": "Cálculo del SAG",
         "CALCULATE_SR": "RA - RB => normalmente entre 30mm y 40mm ",
-        "CALCULATE_SF": "FA - FB => normalmente entre 30mm y - 40mm",
-        "CALCULATE_DR": "RA - RC => normalmente entre 100mm y - 110mm",
+        "CALCULATE_SF": "FA - FB => normalmente entre 30mm y 40mm",
+        "CALCULATE_DR": "RA - RC => normalmente entre 100mm y 110mm",
         "CALCULATE_DF": "FA - FC => normalmente entre 60mm y 70mm",
         "KTM_STATIC_R": "(KTM normalmente entre 33mm y 35mm)",
         "KTM_DINAMIC_R": "(KTM normalmente entre 105mm y 115mm)",
