@@ -1,6 +1,6 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { FormControl, Validators, FormGroupDirective, NgForm, FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormControl, Validators, FormGroupDirective, NgForm, UntypedFormGroup, FormBuilder } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -67,37 +67,37 @@ export class HomeComponent implements OnInit {
     errorD:true,
   };
 
-  sagRearForm = new FormGroup({
+  sagRearForm = new UntypedFormGroup({
       
-    raFormControl : new FormControl('', [
+    raFormControl : new UntypedFormControl('', [
       Validators.required,
       Validators.pattern("^[0-9]*$"),
     ]),
 
-    rbFormControl : new FormControl('', [
+    rbFormControl : new UntypedFormControl('', [
       Validators.required,
       Validators.pattern("^[0-9]*$"),
     ]),
 
-    rcFormControl : new FormControl('', [
+    rcFormControl : new UntypedFormControl('', [
       Validators.pattern("^[0-9]*$"),
     ]),
 
   });
 
-  sagFrontForm = new FormGroup({
+  sagFrontForm = new UntypedFormGroup({
       
-    raFormControl : new FormControl('', [
+    raFormControl : new UntypedFormControl('', [
       Validators.required,
       Validators.pattern("^[0-9]*$"),
     ]),
 
-    rbFormControl : new FormControl('', [
+    rbFormControl : new UntypedFormControl('', [
       Validators.required,
       Validators.pattern("^[0-9]*$"),
     ]),
 
-    rcFormControl : new FormControl('', [
+    rcFormControl : new UntypedFormControl('', [
       Validators.pattern("^[0-9]*$"),
     ]),
 
@@ -209,7 +209,7 @@ export class HomeComponent implements OnInit {
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+  isErrorState(control: UntypedFormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
