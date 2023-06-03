@@ -11,10 +11,10 @@ import { MaterialModule } from './material.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { SagComponent, DialogOverviewDialogFront, DialogOverviewDialogRear } from './sag/sag.component';
 import { environment } from 'src/environments/environment';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+// import { AngularFireModule } from '@angular/fire/compat';
+// import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { VersionCheckService } from './services/version-check.service';
-import { HttpClient, HttpClientModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -36,8 +36,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ReactiveFormsModule,
         FormsModule,
         RouterModule.forRoot(routes),
-        AngularFireModule.initializeApp(environment.firebaseConfig),
-        AngularFireAnalyticsModule,
+        //AngularFireModule.initializeApp(environment.firebaseConfig),
+        // AngularFireAnalyticsModule,
         BrowserAnimationsModule,
         MaterialModule,
         LayoutModule,
