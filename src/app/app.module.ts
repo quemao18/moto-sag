@@ -13,6 +13,7 @@ import { SagComponent, DialogOverviewDialogFront, DialogOverviewDialogRear } fro
 import { environment } from 'src/environments/environment';
 // import { AngularFireModule } from '@angular/fire/compat';
 // import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
+
 import { VersionCheckService } from './services/version-check.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
