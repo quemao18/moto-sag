@@ -1,17 +1,20 @@
 <div class="example-container" [class.dark]="dark" fxLayout="column" fxFlexFill>
 <mat-toolbar color="primary" class="example-toolbar elevation4"> 
-  <button style="margin-top: -5px;" mat-icon-button (click)="snav.toggle()">
+  <button mat-icon-button (click)="snav.toggle()">
     <mat-icon>menu</mat-icon>
   </button>
-  <h1 class="">{{name}}</h1>
+  <h1 class="example-app-name">{{name}}</h1>
 
   <span class="example-spacer"></span>
-  <mat-form-field style="width: 50px; text-align: center; margin-right: 5px;">
-  <!-- <mat-label>Language</mat-label> -->
-  <mat-select [(value)]="lang" #langSelect (selectionChange)="translate.use(langSelect.value)">
-    <mat-option *ngFor="let lang of translate.getLangs()" [value]="lang" >{{ lang | uppercase }}</mat-option>
-  </mat-select>
-  </mat-form-field> 
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>translate</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" xPosition="before">
+    <button (click)="changeLang(lang)" *ngFor="let lang of translate.getLangs()" mat-menu-item>
+      <span>{{lang | uppercase }}</span>
+      <mat-icon *ngIf="lang==translate.currentLang">check</mat-icon>
+    </button>
+  </mat-menu>
   <button mat-icon-button (click)="dark=!dark">
     <mat-icon class="example-icon" aria-hidden="false" aria-label="Change theme">{{dark ? 'wb_sunny':'nights_stay'}}</mat-icon>
   </button>
@@ -25,7 +28,7 @@
     [style.marginTop.px]="mobileQuery.matches ? 0 : 0"
     [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <mat-nav-list>
-        <a (click)="mobileQuery.matches ? snav.close() : ''"  mat-list-item routerLinkActive="active" routerLink="/home" href="#">{{ 'HOME.INFO' | translate }}</a>
+        <a (click)="mobileQuery.matches ? snav.close() : ''" mat-list-item routerLinkActive="active" routerLink="/home" href="#">{{ 'HOME.INFO' | translate }}</a>
         <a (click)="mobileQuery.matches ? snav.close() : ''" mat-list-item routerLinkActive="active" routerLink="/sag/front" href="#">{{ 'SAG.FRONT' | translate }}</a>
         <a (click)="mobileQuery.matches ? snav.close() : ''" mat-list-item routerLinkActive="active" routerLink="/sag/rear" href="#">{{ 'SAG.REAR' | translate }}</a>
         <footer class="footer2 "> 

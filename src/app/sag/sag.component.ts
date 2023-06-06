@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, ChangeDetectorRef, ElementRef } from '@angular/core';
-import { UntypedFormControl, Validators, FormGroupDirective, NgForm, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormControl, Validators, FormGroupDirective, NgForm, UntypedFormGroup, FormsModule } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router, } from '@angular/router';
@@ -253,7 +253,7 @@ export class SagComponent implements OnInit {
   get fc() { return this.sagFrontForm.get('rcFormControl'); }
 
   openDialogSettingSagFront(): void { 
-    
+    console.log('open')
     const dialogRef = this.dialog.open(DialogOverviewDialogFront, {
       // width: '400px',
       // data: {name: this.name, animal: this.animal}
@@ -269,6 +269,7 @@ export class SagComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
+      if(result == undefined) return;
       this.sagEIdealMinFront = result.sagEIdealMinFront;
       this.sagEIdealMaxFront = result.sagEIdealMaxFront;
       this.sagDIdealMinFront = result.sagDIdealMinFront;
@@ -294,6 +295,7 @@ export class SagComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result);
+      if(result == undefined) return;
       this.sagEIdealMinRear = result.sagEIdealMinRear;
       this.sagEIdealMaxRear = result.sagEIdealMaxRear;
       this.sagDIdealMinRear = result.sagDIdealMinRear;
@@ -344,7 +346,7 @@ export class DialogOverviewDialogFront {
 @Component({
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'dialog-sag-setting-rear.html',
-  styleUrls: ['./sag.component.css']
+  styleUrls: ['./sag.component.css'],
 })
 export class DialogOverviewDialogRear {
 

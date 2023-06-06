@@ -1,47 +1,51 @@
-<div [@animate] fxLayout="row"  fxLayoutGap="22px" class="center"  [style.margin-top]="'22px'">
+<div [@animate] fxLayout="row" class="center" >
 <mat-card class="example-card">
     <mat-card-header>
-      <!-- <div mat-card-avatar class="example-header-image"></div> -->
       <mat-card-title>{{ 'HOME.TITLE' | translate }}</mat-card-title>
       <mat-card-subtitle>{{ 'HOME.SUB_TITLE' | translate }}</mat-card-subtitle>
     </mat-card-header>
-    <h2 class="mat-h2">{{ 'HOME.WHAT_IS' | translate }}</h2>
-    <p>{{ 'HOME.EXPLANATION' | translate }}</p>
-    <h3 class="subheading-2">{{ 'HOME.EXPLANATION_1' | translate }}</h3>
     
-    <img height="70%" mat-card-image src="./assets/img/rear2.png" alt="{{ 'SAG.REAR' | translate }}">
-    <img height="70%" mat-card-image src="./assets/img/front2.png" alt="{{ 'SAG.FRONT' | translate }}">
     <mat-card-content>
-       
-        <p><strong>{{ 'SAG.BENCH' | translate }}</strong></p> 
-        <p>{{ 'SAG.BENCH_R' | translate }}</p>
-        <p>{{ 'SAG.BENCH_F' | translate }}</p>
+      <br>
+      <h2 class="mat-h2">{{ 'HOME.WHAT_IS' | translate }}</h2>
+      <p>{{ 'HOME.EXPLANATION' | translate }}</p>
 
-        <p><strong>{{ 'SAG.GROUND' | translate }}</strong></p>  
-        <p>{{ 'SAG.GROUND_R' | translate }}</p>
-        <p>{{ 'SAG.GROUND_F' | translate }}</p>
+      <p class="subheading-2">{{ 'HOME.EXPLANATION_1' | translate }}</p>
 
-        <p><strong>{{ 'SAG.RIDER' | translate }}</strong></p>
-        <p>{{ 'SAG.RIDER_R' | translate }}</p>
-        <p>{{ 'SAG.RIDER_F' | translate }}</p>
-        <p><strong>{{ 'SAG.CALCULATE' | translate }}</strong></p>
-        <p>{{ 'SAG.STATIC_R' | translate }}<br>{{ 'SAG.CALCULATE_SR' | translate }} <b>{{ 'SAG.KTM_STATIC_R' | translate }}</b></p>
-        <p>{{ 'SAG.STATIC_F' | translate }}<br>{{ 'SAG.CALCULATE_SF' | translate }}</p>
-        <p>{{ 'SAG.DINAMIC_R' | translate }}<br>{{ 'SAG.CALCULATE_DR' | translate }} <b>{{ 'SAG.KTM_DINAMIC_R' | translate }}</b></p>
-        <p>{{ 'SAG.DINAMIC_F' | translate }}<br>{{ 'SAG.CALCULATE_DF' | translate }}</p>
-        <p><strong>{{ 'HOME.SAMPLE_1' | translate }}</strong></p>
-        <p>{{ 'HOME.SAMPLE_1_TEXT_1' | translate }}</p><p> {{ 'HOME.SAMPLE_1_TEXT_2' | translate }}</p><p> {{ 'HOME.SAMPLE_1_TEXT_3' | translate }}</p>
-        <p><strong>{{ 'HOME.SAMPLE_2' | translate }}</strong></p>
-        <p>{{ 'HOME.SAMPLE_2_TEXT_1' | translate }}</p><p> {{ 'HOME.SAMPLE_2_TEXT_2' | translate }}</p><p> {{ 'HOME.SAMPLE_2_TEXT_3' | translate }}</p>
-        <p><strong>{{ 'HOME.SAMPLE_3' | translate }}</strong></p>
-        <p>{{ 'HOME.SAMPLE_3_TEXT_1' | translate }}</p><p> {{ 'HOME.SAMPLE_3_TEXT_3' | translate }}</p><p> {{ 'HOME.SAMPLE_3_TEXT_3' | translate }}</p>
+      <img height="70%" width="100%" mat-card-image src="./assets/img/rear2.png" alt="{{ 'SAG.REAR' | translate }}">
+      <em>{{ 'SAG.REAR' | translate }}</em>
+      <img height="70%" width="100%" style="margin-top:10px" mat-card-image src="./assets/img/front2.png" alt="{{ 'SAG.FRONT' | translate }}">
+      <em>{{ 'SAG.FRONT' | translate }}</em>
+      <br>
+      <br>
+      <p><strong>{{ 'SAG.BENCH' | translate }}</strong></p> 
+      <p>{{ 'SAG.BENCH_R' | translate }}</p>
+      <p>{{ 'SAG.BENCH_F' | translate }}</p>
 
+      <p><strong>{{ 'SAG.GROUND' | translate }}</strong></p>  
+      <p>{{ 'SAG.GROUND_R' | translate }}</p>
+      <p>{{ 'SAG.GROUND_F' | translate }}</p>
+
+      <p><strong>{{ 'SAG.RIDER' | translate }}</strong></p>
+      <p>{{ 'SAG.RIDER_R' | translate }}</p>
+      <p>{{ 'SAG.RIDER_F' | translate }}</p>
+      <p><strong>{{ 'SAG.CALCULATE' | translate }}</strong></p>
+      <p>{{ 'SAG.STATIC_R' | translate }}<br>{{ 'SAG.CALCULATE_SR' | translate }} <b>{{ 'SAG.KTM_STATIC_R' | translate }}</b></p>
+      <p>{{ 'SAG.STATIC_F' | translate }}<br>{{ 'SAG.CALCULATE_SF' | translate }}</p>
+      <p>{{ 'SAG.DINAMIC_R' | translate }}<br>{{ 'SAG.CALCULATE_DR' | translate }} <b>{{ 'SAG.KTM_DINAMIC_R' | translate }}</b></p>
+      <p>{{ 'SAG.DINAMIC_F' | translate }}<br>{{ 'SAG.CALCULATE_DF' | translate }}</p>
+      <p><strong>{{ 'HOME.SAMPLE_1' | translate }}</strong></p>
+      <p>{{ 'HOME.SAMPLE_1_TEXT_1' | translate }}</p><p> {{ 'HOME.SAMPLE_1_TEXT_2' | translate }}</p><p> {{ 'HOME.SAMPLE_1_TEXT_3' | translate }}</p>
+      <p><strong>{{ 'HOME.SAMPLE_2' | translate }}</strong></p>
+      <p>{{ 'HOME.SAMPLE_2_TEXT_1' | translate }}</p><p> {{ 'HOME.SAMPLE_2_TEXT_2' | translate }}</p><p> {{ 'HOME.SAMPLE_2_TEXT_3' | translate }}</p>
+      <p><strong>{{ 'HOME.SAMPLE_3' | translate }}</strong></p>
+      <p>{{ 'HOME.SAMPLE_3_TEXT_1' | translate }}</p><p> {{ 'HOME.SAMPLE_3_TEXT_3' | translate }}</p><p> {{ 'HOME.SAMPLE_3_TEXT_3' | translate }}</p>
+      <br><p style="font-weight: bold;font-size: larger;">{{ 'SAG.START' | translate }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <p style="margin-left: 10px; font-weight: bold;font-size: larger;">{{ 'SAG.START' | translate }}</p>
+
       <button mat-button color="primary" routerLink="/sag/front">{{ 'SAG.FRONT' | translate }}</button>
       <button mat-button color="primary" routerLink="/sag/rear">{{ 'SAG.REAR' | translate }}</button>
     </mat-card-actions>
   </mat-card>
-<br>
 </div>

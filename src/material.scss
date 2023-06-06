@@ -1,68 +1,32 @@
-@import '@angular/material/theming';
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// **Be sure that you only ever include this mixin once!**
-@include mat-core();
-
-// Define the default theme (same as the example above).
-$mat-theme-ignore-duplication-warnings: true;
-$candy-app-primary: mat-palette($mat-orange, 800);
-$candy-app-accent:  mat-palette($mat-amber, A200, A100, A400);
-$candy-app-theme:   mat-light-theme($candy-app-primary, $candy-app-accent);
-
-// Include the default theme styles.
-@include angular-material-theme($candy-app-theme);
+@use '@angular/material' as mat;
 
 
-// Define an alternate dark theme.
-$dark-primary: mat-palette($mat-grey, 800);
-$dark-accent:  mat-palette($mat-amber);
-$dark-warn:    mat-palette($mat-deep-orange);
-$dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+$light-theme: mat.define-light-theme((
+  color: (
+   primary: mat.define-palette(mat.$deep-orange-palette),
+   accent: mat.define-palette(mat.$brown-palette),
+ ),
+ typography: mat.define-typography-config(),
+));
+$dark-theme: mat.define-dark-theme((
+  color: (
+    primary: mat.define-palette(mat.$gray-palette),
+    accent: mat.define-palette(mat.$blue-grey-palette),
+ ),
+   // Only include `typography` and `density` in the default dark theme.
+   typography: mat.define-typography-config(),
+   density: 0,
+));
 
-// Include the alternative theme styles inside of a block with a CSS class. You can make this
-// CSS class whatever you want. In this example, any component inside of an element with
-// `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
+// Generates styles for all systems configured in the theme. In this case, color styles
+// and default density styles are generated. Density is in themes by default.
+
+@include mat.all-component-themes($light-theme);
+
+
 .dark {
-  @include angular-material-theme($dark-theme);
+  // Generates styles for all systems configured in the theme. In this case, color styles
+  // and the default density styles are generated. **Note** that this is a problem because it
+  // means that density styles are generated *again*, even though only the color should change.
+  @include mat.all-component-themes($dark-theme);
 }
-
-.default {
-  @include angular-material-theme($candy-app-theme);
-}
-
-
-@mixin custom-components-theme($theme) {
-
-  @include dialog-component-theme($theme);
- }
-
-.elevation4 {
-  // Adds a shadow for elevation level 2 with default color and full opacity:
-  position: relative;
-  z-index: 10;
-  @include mat-elevation(4);
-}
-
-.footer-primary {
-  color: white;
-  a{
-    color: white;
-  }
-  $candy-app-primary: mat-palette($mat-indigo, A200, A100, A400);
-  background-color: mat-color($candy-app-primary);
-}
-
-.footer-primary-dark {
-  color: black;
-  a{
-    color: black;
-  }
-  $dark-primary: mat-palette($mat-blue-grey, A200, A100, A400);
-  background-color: mat-color($dark-primary);
-}
-
-
-  

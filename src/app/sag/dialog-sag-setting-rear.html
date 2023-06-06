@@ -1,52 +1,55 @@
-<mat-card-title>{{ 'SAG.RECOMENDED_R' | translate }}</mat-card-title>
-<mat-card-subtitle>{{ 'SAG.MANUAL' | translate }}</mat-card-subtitle>
-<form >
-<div mat-dialog-content>
-  <h3 style="font-weight: 600;">{{ 'SAG.STATIC' | translate }}:</h3>
-    <table class="" cellspacing="0">
-        <tr>
-            <td>
-                <mat-form-field>
-                    <mat-label>{{ 'SAG.MIN' | translate }}</mat-label>
-                    <input type="tel" matInput [(ngModel)]="data.sagEIdealMinRear" name="sagEIdealMinRear" required>
-                    <span matSuffix>mm</span>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <mat-label>{{ 'SAG.MAX' | translate }}</mat-label>
-                    <input type="tel" matInput [(ngModel)]="data.sagEIdealMaxRear" name="sagEIdealMaxRear" required>
-                    <span matSuffix>mm</span>
-                </mat-form-field>
-            </td>
-        </tr>
-    
-    </table>
-  <h3 style="font-weight: 600;">{{ 'SAG.DINAMIC' | translate }}:</h3>
-    <table class="" cellspacing="0">
-        <tr>
-            <td>
-                <mat-form-field>
-                    <mat-label>{{ 'SAG.MIN' | translate }}</mat-label>
-                    <input type="tel" matInput [(ngModel)]="data.sagDIdealMinRear" name="sagDIdealMinRear" required>
-                    <span matSuffix>mm</span>
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <mat-label>{{ 'SAG.MAX' | translate }}</mat-label>
-                    <input type="tel" matInput [(ngModel)]="data.sagDIdealMaxRear" name="sagDIdealMaxRear" required>
-                    <span matSuffix>mm</span>
-                </mat-form-field>
-            </td>
-        </tr>
-    
-    </table>
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title [style.color]="data.dark ? 'white': 'black'">{{ 'SAG.RECOMENDED_R' | translate }}</mat-card-title>
+        <mat-card-subtitle>{{ 'SAG.MANUAL' | translate }}</mat-card-subtitle>
+      </mat-card-header>
+    <form >
+    <div mat-dialog-content>
+    <h3 style="font-weight: 600;">{{ 'SAG.STATIC' | translate }}:</h3>
+        <table class="" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field>
+                        <mat-label>{{ 'SAG.MIN' | translate }}</mat-label>
+                        <input type="tel" matInput [(ngModel)]="data.sagEIdealMinRear" name="sagEIdealMinRear" required>
+                        <span class="mat-suffix" matSuffix>mm</span>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <mat-label>{{ 'SAG.MAX' | translate }}</mat-label>
+                        <input type="tel" matInput [(ngModel)]="data.sagEIdealMaxRear" name="sagEIdealMaxRear" required>
+                        <span class="mat-suffix" matSuffix>mm</span>
+                    </mat-form-field>
+                </td>
+            </tr>
+        
+        </table>
+    <h3 style="font-weight: 600;">{{ 'SAG.DINAMIC' | translate }}:</h3>
+        <table class="" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field>
+                        <mat-label>{{ 'SAG.MIN' | translate }}</mat-label>
+                        <input type="tel" matInput [(ngModel)]="data.sagDIdealMinRear" name="sagDIdealMinRear" required>
+                        <span class="mat-suffix" matSuffix>mm</span>
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field>
+                        <mat-label>{{ 'SAG.MAX' | translate }}</mat-label>
+                        <input type="tel" matInput [(ngModel)]="data.sagDIdealMaxRear" name="sagDIdealMaxRear" required>
+                        <span class="mat-suffix" matSuffix>mm</span>
+                    </mat-form-field>
+                </td>
+            </tr>
+        
+        </table>
 
-</div>
-</form>
-<div mat-dialog-actions>
-  <button mat-button [disabled]="check(data)" mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>{{ 'SAG.SAVE' | translate }}</button>
-  <button mat-button (click)="onNoClick()">{{ 'SAG.CLOSE' | translate }}</button>
-</div>
-
+    </div>
+    </form>
+    <div mat-dialog-actions>
+    <button mat-button [disabled]="check(data)" mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>{{ 'SAG.SAVE' | translate }}</button>
+    <button mat-button (click)="onNoClick()">{{ 'SAG.CLOSE' | translate }}</button>
+    </div>
+</mat-card>
