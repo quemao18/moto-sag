@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnDestroy, ViewChild, ElementRef} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, ViewChild, ElementRef, ViewEncapsulation} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import * as Hammer from 'hammerjs';
@@ -7,7 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnDestroy {
 
@@ -45,7 +45,7 @@ export class NavComponent implements OnDestroy {
   }
 
   changeLang(lang){
-    // this.translate.use(lang);
+    this.translate.use(lang);
     // sessionStorage.setItem('lang', lang);
     // this.router.navigate(['/']);
 }
