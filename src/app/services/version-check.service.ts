@@ -2,6 +2,7 @@ import { Injectable, Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { SwUpdate } from '@angular/service-worker';
 
 
 @Injectable()
@@ -9,7 +10,7 @@ export class VersionCheckService {
     // this will be replaced by actual hash post-build.js
     private currentHash = '{{POST_BUILD_ENTERS_HASH_HERE}}';
 
-    constructor(private http: HttpClient, private _snackBar: MatSnackBar) {}
+    constructor(private http: HttpClient, private _snackBar: MatSnackBar, private swUpdate: SwUpdate) {}
 
     /**
      * Checks in every set frequency the version of frontend application
@@ -17,8 +18,13 @@ export class VersionCheckService {
      * @param {number} frequency - in milliseconds, defaults to 30 minutes
      */
     public initVersionCheck(url, frequency = 1000 * 60) {
+        this.swUpdate.available.subscribe(event => {
+            this.openSnackBar();
+          });
         setInterval(() => {
-            this.checkVersion(url);
+            // this.showNotification();
+            this.swUpdate.checkForUpdate();
+            // this.checkVersion(url);
         }, frequency);
     }
 
@@ -71,9 +77,9 @@ export class VersionCheckService {
         // this._snackBar.openFromComponent(SnackBarComponent, {
         //   duration: 30 * 60 * 1000 * 6, //3hrs
         // });
-        this._snackBar.open('Nueva versión disponible!', 'Actualizar').onAction().subscribe(() => {
+        this._snackBar.open('¡Nueva versión disponible!', 'Actualizar').onAction().subscribe(() => {
             console.log('The snack-bar action was triggered!');
-            location.reload(true);
+            window.location.reload();
           });
       }
 }

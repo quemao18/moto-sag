@@ -11,8 +11,9 @@ import { MaterialModule } from './material.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { SagComponent, DialogOverviewDialogFront, DialogOverviewDialogRear } from './sag/sag.component';
 import { environment } from 'src/environments/environment';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+// import { AngularFireModule } from '@angular/fire/compat';
+// import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
+
 import { VersionCheckService } from './services/version-check.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
@@ -31,51 +32,44 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 }
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    FormsModule,
-    RouterModule.forRoot(routes),
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAnalyticsModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    LayoutModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-      // Register the ServiceWorker as soon as the app is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    }),
-  ],
-  entryComponents: [
-    AppComponent,
-    HomeComponent,
-    NavComponent,
-    DialogOverviewDialogFront,
-    DialogOverviewDialogRear
-  ],
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    NavComponent,
-    SagComponent,
-    DialogOverviewDialogFront,
-    DialogOverviewDialogRear,
-  ],
-  providers: [
-    VersionCheckService,
-    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'standard' } },
-  ],
-  bootstrap: [ AppComponent ]
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule,
+        FormsModule,
+        RouterModule.forRoot(routes),
+        //AngularFireModule.initializeApp(environment.firebaseConfig),
+        // AngularFireAnalyticsModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        LayoutModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+            // Register the ServiceWorker as soon as the app is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        }),
+    ],
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        NavComponent,
+        SagComponent,
+        DialogOverviewDialogFront,
+        DialogOverviewDialogRear,
+    ],
+    providers: [
+        VersionCheckService,
+        { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
 

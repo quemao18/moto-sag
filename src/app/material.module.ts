@@ -13,7 +13,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatMenuModule} from '@angular/material/menu';
 
 const modules = [
   CommonModule,
@@ -28,7 +28,8 @@ const modules = [
   MatSnackBarModule,
   MatDialogModule,
   MatFormFieldModule,
-  MatSelectModule
+  MatSelectModule,
+  MatMenuModule,
 ];
 
 

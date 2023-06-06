@@ -1,5 +1,8 @@
-<mat-card-title>{{ 'SAG.RECOMENDED_F' | translate }}</mat-card-title>
-<mat-card-subtitle>{{ 'SAG.MANUAL' | translate }}</mat-card-subtitle>
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title [style.color]="data.dark ? 'white': 'black'">{{ 'SAG.RECOMENDED_F' | translate }}</mat-card-title>
+        <mat-card-subtitle>{{ 'SAG.MANUAL' | translate }}</mat-card-subtitle>
+      </mat-card-header>
 <form>
 <div mat-dialog-content>
     <h3 style="font-weight: 600;">{{ 'SAG.STATIC' | translate }}:</h3>
@@ -9,14 +12,14 @@
                 <mat-form-field>
                     <mat-label>{{ 'SAG.MIN' | translate }}</mat-label>
                     <input type="tel" matInput pattern="\d*" [(ngModel)]="data.sagEIdealMinFront" name="sagEIdealMinFront" required>
-                    <span matSuffix>mm</span>
+                    <span class="mat-suffix" matSuffix>mm</span>
                 </mat-form-field>
             </td>
             <td>
                 <mat-form-field>
                     <mat-label>{{ 'SAG.MAX' | translate }}</mat-label>
                     <input type="tel" matInput [(ngModel)]="data.sagEIdealMaxFront" name="sagEIdealMaxFront" required>
-                    <span matSuffix>mm</span>
+                    <span class="mat-suffix" matSuffix>mm</span>
                 </mat-form-field>
             </td>
         </tr>
@@ -29,14 +32,14 @@
                 <mat-form-field>
                     <mat-label>{{ 'SAG.MIN' | translate }}</mat-label>
                     <input type="tel" matInput [(ngModel)]="data.sagDIdealMinFront" name="sagDIdealMinFront" required>
-                    <span matSuffix>mm</span>
+                    <span class="mat-suffix" matSuffix>mm</span>
                 </mat-form-field>
             </td>
             <td>
                 <mat-form-field>
                     <mat-label>{{ 'SAG.MAX' | translate }}</mat-label>
                     <input type="tel" matInput [(ngModel)]="data.sagDIdealMaxFront" name="sagDIdealMaxFront" required>
-                    <span matSuffix>mm</span>
+                    <span class="mat-suffix" matSuffix>mm</span>
                 </mat-form-field>
             </td>
         </tr>
@@ -49,5 +52,6 @@
   <button mat-button mat-raised-button [disabled]="check(data)" color="primary" [mat-dialog-close]="data" cdkFocusInitial>{{ 'SAG.SAVE' | translate }}</button>
   <button mat-button (click)="onNoClick()">{{ 'SAG.CLOSE' | translate }}</button>
 </div>
+</mat-card> 
 
 
