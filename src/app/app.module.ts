@@ -11,8 +11,11 @@ import { MaterialModule } from './material.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { SagComponent, DialogOverviewDialogFront, DialogOverviewDialogRear } from './sag/sag.component';
 import { environment } from 'src/environments/environment';
-// import { AngularFireModule } from '@angular/fire/compat';
-// import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
+
+import {ScreenTrackingService, UserTrackingService}
+from '@angular/fire/analytics';
+import {AngularFireAnalyticsModule} from "@angular/fire/compat/analytics";
+import {AngularFireModule} from "@angular/fire/compat";
 
 import { VersionCheckService } from './services/version-check.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -37,8 +40,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ReactiveFormsModule,
         FormsModule,
         RouterModule.forRoot(routes),
-        //AngularFireModule.initializeApp(environment.firebaseConfig),
-        // AngularFireAnalyticsModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireAnalyticsModule,
         BrowserAnimationsModule,
         MaterialModule,
         LayoutModule,
@@ -68,6 +71,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     providers: [
         VersionCheckService,
         { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
+        ScreenTrackingService,
+        UserTrackingService
     ],
     bootstrap: [AppComponent]
 })
