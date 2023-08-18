@@ -22,11 +22,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 const routes: Routes = [  
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'sag/:type', component: SagComponent },
+  { path: 'privacy', component: PrivacyComponent },
 ];
 
 // AoT requires an exported function for factories
@@ -67,6 +69,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         SagComponent,
         DialogOverviewDialogFront,
         DialogOverviewDialogRear,
+        PrivacyComponent,
     ],
     providers: [
         VersionCheckService,
