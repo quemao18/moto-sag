@@ -80,18 +80,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "motosag:build"
+            "buildTarget": "motosag:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "motosag:build:production"
+              "buildTarget": "motosag:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "motosag:build"
+            "buildTarget": "motosag:build"
           }
         },
         "test": {
