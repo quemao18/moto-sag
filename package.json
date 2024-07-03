@@ -3,7 +3,7 @@
   "version": "0.17.0",
   "private": true,
   "dependencies": {
-    "@angular-devkit/core": "^17.3.8",
+    "@angular-devkit/core": "^18.0.7",
     "@angular/animations": "18.0.5",
     "@angular/cdk": "^18.0.6",
     "@angular/common": "18.0.5",
@@ -42,9 +42,9 @@
     "build-fire": "ng build --configuration=production && firebase deploy --only hosting:moto-sag"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "^0.1703.8",
-    "@angular-devkit/build-angular": "^17.3.8",
-    "@angular/cli": "^17.3.8",
+    "@angular-devkit/architect": "^0.1800.7",
+    "@angular-devkit/build-angular": "^18.0.7",
+    "@angular/cli": "^18.0.7",
     "@angular/compiler-cli": "^18.0.5",
     "@angular/language-service": "^18.0.5",
     "@types/hammerjs": "^2.0.41",
