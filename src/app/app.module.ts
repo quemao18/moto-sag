@@ -18,7 +18,7 @@ import {AngularFireAnalyticsModule} from "@angular/fire/compat/analytics";
 import {AngularFireModule} from "@angular/fire/compat";
 
 import { VersionCheckService } from './services/version-check.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -36,9 +36,16 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
 
-@NgModule({
-    imports: [
-        BrowserModule,
+@NgModule({ declarations: [
+        AppComponent,
+        HomeComponent,
+        NavComponent,
+        SagComponent,
+        DialogOverviewDialogFront,
+        DialogOverviewDialogRear,
+        PrivacyComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
         ReactiveFormsModule,
         FormsModule,
         RouterModule.forRoot(routes),
@@ -47,7 +54,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         BrowserAnimationsModule,
         MaterialModule,
         LayoutModule,
-        HttpClientModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -60,25 +66,13 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
             // Register the ServiceWorker as soon as the app is stable
             // or after 30 seconds (whichever comes first).
             registrationStrategy: 'registerWhenStable:30000'
-        }),
-    ],
-    declarations: [
-        AppComponent,
-        HomeComponent,
-        NavComponent,
-        SagComponent,
-        DialogOverviewDialogFront,
-        DialogOverviewDialogRear,
-        PrivacyComponent,
-    ],
-    providers: [
+        })], providers: [
         VersionCheckService,
         { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
         ScreenTrackingService,
-        UserTrackingService
-    ],
-    bootstrap: [AppComponent]
-})
+        UserTrackingService,
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule { }
 
 
