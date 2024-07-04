@@ -1,8 +1,6 @@
 <div class="example-container" [class.dark]="dark" fxLayout="column" fxFlexFill>
   <mat-toolbar color="primary" class="example-toolbar elevation4">
     <button mat-icon-button 
-      (panleft)="snav.toggle()"
-      (panright)="snav.toggle()"
       (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
@@ -28,10 +26,14 @@
     </button>
   </mat-toolbar>
 
-  <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav [opened]="mobileQuery.matches ? 'false' : 'true'"
-      style="width:180px;padding: 10px; text-align: center;" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-      [style.marginTop.px]="mobileQuery.matches ? 0 : 0" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+  <mat-drawer-container class="example-sidenav-container">
+    <mat-drawer
+      [opened]="mobileQuery.matches ? 'false' : 'true'"
+      style="width:250px; text-align: center; border-right:solid 1px #ccc; border-radius: 0;" 
+      #snav 
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [style.marginTop.px]="mobileQuery.matches ? 0 : 0" [style.marginBottom.px]="mobileQuery.matches ? 0 : 0"
+    >
       <mat-nav-list>
         <a (click)="mobileQuery.matches ? snav.close() : ''" mat-list-item routerLinkActive="active" routerLink="/home"
           href="#">{{ 'HOME.INFO' | translate }}</a>
@@ -39,25 +41,32 @@
           routerLink="/sag/front" href="#">{{ 'SAG.FRONT' | translate }}</a>
         <a (click)="mobileQuery.matches ? snav.close() : ''" mat-list-item routerLinkActive="active"
           routerLink="/sag/rear" href="#">{{ 'SAG.REAR' | translate }}</a>
-        <footer class="footer2 ">
-          <a href="https://paypal.me/quemao18" target="_blank">
-            <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-color.svg" alt="PayPal">
-          </a>
-          <br>
-          By <a [style.color]="dark? 'white':''" target="blank" href="https://github.com/quemao18">&#64;quemao18</a>
-        </footer>
       </mat-nav-list>
-    </mat-sidenav>
 
-    <mat-sidenav-content fullscreen>
+      <footer class="footer2">
+        <button mat-stroked-button color="primary" href="https://paypal.me/quemao18" target="_blank" class="donate-button">
+          <div class="donate-container">
+            <a  href="https://paypal.me/quemao18" target="_blank">
+              <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-mark-color.svg" height="30px" alt="PayPal">
+            </a>
+            <span>{{ 'HOME.PAYPAL_TEXT' | translate }}</span>
+          </div>
+        </button>
+        <br>
+        By <a [style.color]="dark? 'white':''" target="blank" href="https://github.com/quemao18">&#64;quemao18</a>
+      </footer>
+
+    </mat-drawer>
+
+    <mat-drawer-content fullscreen>
 
       <!-- Add Content Here -->
       <div class="container">
         <router-outlet></router-outlet>
       </div>
 
-    </mat-sidenav-content>
+    </mat-drawer-content>
 
-  </mat-sidenav-container>
+  </mat-drawer-container>
 
 </div>

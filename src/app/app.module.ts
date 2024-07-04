@@ -23,6 +23,7 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { PrivacyComponent } from './privacy/privacy.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 const routes: Routes = [  
   { path: '', component: HomeComponent },
@@ -71,7 +72,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
         ScreenTrackingService,
         UserTrackingService,
-        provideHttpClient(withInterceptorsFromDi())
+        provideHttpClient(withInterceptorsFromDi()),
+        provideAnimationsAsync()
     ] })
 export class AppModule { }
 
