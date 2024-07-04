@@ -1,7 +1,6 @@
-import {ChangeDetectorRef, Component, OnDestroy, ViewChild, ElementRef, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, ViewChild, ElementRef} from '@angular/core';
 import {MediaMatcher} from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
-import * as Hammer from 'hammerjs';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -24,13 +23,14 @@ export class NavComponent implements OnDestroy {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener('change', this._mobileQueryListener);
-    const hammertime = new Hammer(elementRef.nativeElement, {});
-        hammertime.on('panright', (ev) => {
-            this.snav.open();
-        });
-        hammertime.on('panleft', (ev) => {
-            this.snav.close();
-        });
+    // const hammertime = new Hammer(elementRef.nativeElement, {});
+    
+        // hammertime.on('panright', (ev) => {
+        //     this.snav.open();
+        // });
+        // hammertime.on('panleft', (ev) => {
+        //     this.snav.close();
+        // });
 
         translate.addLangs(['en', 'es', 'it', 'fr']);
         translate.setDefaultLang('en');
@@ -46,8 +46,6 @@ export class NavComponent implements OnDestroy {
 
   changeLang(lang){
     this.translate.use(lang);
-    // sessionStorage.setItem('lang', lang);
-    // this.router.navigate(['/']);
 }
 
 

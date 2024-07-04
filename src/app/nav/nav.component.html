@@ -1,6 +1,9 @@
 <div class="example-container" [class.dark]="dark" fxLayout="column" fxFlexFill>
   <mat-toolbar color="primary" class="example-toolbar elevation4">
-    <button mat-icon-button (click)="snav.toggle()">
+    <button mat-icon-button 
+      (panleft)="snav.toggle()"
+      (panright)="snav.toggle()"
+      (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
     <h1 class="example-app-name">{{name}}</h1>
