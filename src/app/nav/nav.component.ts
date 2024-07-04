@@ -1,8 +1,9 @@
-import {ChangeDetectorRef, Component, OnDestroy, ViewChild, ElementRef, ViewEncapsulation} from '@angular/core';
-import {MediaMatcher} from '@angular/cdk/layout';
-import { MatSidenav } from '@angular/material/sidenav';
-import * as Hammer from 'hammerjs';
 import { TranslateService } from '@ngx-translate/core';
+import { ChangeDetectorRef, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout';
+import { MatSidenav } from '@angular/material/sidenav';
+//require hammerjs
+import Hammer from 'hammerjs/hammer';
 
 @Component({
   selector: 'app-nav',
@@ -14,8 +15,8 @@ export class NavComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
   @ViewChild(MatSidenav)
   public snav: MatSidenav;
-  public dark: boolean ;
-  name: string = "Moto SAG"
+  public dark: boolean;
+  name: string = "Moto SAG";
   lang: string = "es";
   
   private _mobileQueryListener: () => void;
@@ -24,31 +25,30 @@ export class NavComponent implements OnDestroy {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener('change', this._mobileQueryListener);
-    const hammertime = new Hammer(elementRef.nativeElement, {});
-        hammertime.on('panright', (ev) => {
-            this.snav.open();
-        });
-        hammertime.on('panleft', (ev) => {
-            this.snav.close();
-        });
+    
+    const hammertime = new Hammer(elementRef.nativeElement);
+    hammertime.get('pan').set({ direction: Hammer.DIRECTION_HORIZONTAL });
 
-        translate.addLangs(['en', 'es', 'it', 'fr']);
-        translate.setDefaultLang('en');
-        
-        const browserLang = translate.getBrowserLang();
-        this.lang = browserLang;
-        translate.use(browserLang.match(/en|es/) ? browserLang : 'es');
+    hammertime.on('panright', (ev) => {
+      this.snav.open();
+    });
+    hammertime.on('panleft', (ev) => {
+      this.snav.close();
+    });
+
+    translate.addLangs(['en', 'es', 'it', 'fr']);
+    translate.setDefaultLang('en');
+    
+    const browserLang = translate.getBrowserLang();
+    this.lang = browserLang;
+    translate.use(browserLang.match(/en|es/) ? browserLang : 'es');
   }
 
   ngOnDestroy(): void {
     this.mobileQuery.removeEventListener('change', this._mobileQueryListener);
   }
 
-  changeLang(lang){
+  changeLang(lang: string): void {
     this.translate.use(lang);
-    // sessionStorage.setItem('lang', lang);
-    // this.router.navigate(['/']);
-}
-
-
+  }
 }
