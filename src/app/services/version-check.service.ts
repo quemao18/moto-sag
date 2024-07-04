@@ -29,9 +29,13 @@ export class VersionCheckService {
           ).subscribe(event => {
             console.log(`Current version is ${event.currentVersion.hash}`);
             console.log(`New version is ${event.latestVersion.hash}`);
-            if (confirm("New version available. Load New Version?")) {
+            if (event.currentVersion.hash !== event.latestVersion.hash) {
                 this.openSnackBar();
             }
+
+            // if (confirm("New version available. Load New Version?")) {
+            //     this.openSnackBar();
+            // }
           });
         }
     }
