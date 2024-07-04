@@ -7,6 +7,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { NavComponent } from '../nav/nav.component';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { AngularFireAnalytics } from '@angular/fire/compat/analytics';
 
 export interface DialogDataSagFront {
   sagEIdealMinFront:number;
@@ -126,28 +127,17 @@ export class SagComponent implements OnInit {
 
   });
 
-  private _mobileQueryListener: () => void;
-
   constructor(
-    elementRef: ElementRef,
-    public routes: Router,
-    public overlayContainer: OverlayContainer,
-    public nav:NavComponent,
-    public dialog: MatDialog, private route: ActivatedRoute, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
-      // const hammertime = new Hammer(elementRef.nativeElement, {});
-      // hammertime.on('panright', (ev) => {
-      //   if(this.routes.url == 'sag/rear')
-      //   this.routes.navigate(['sag/front'])
-      //   else
-      //   this.routes.navigate(['/home'])
-
-      // });
-      // hammertime.on('panleft', (ev) => {
-      //     this.routes.navigate(['sag/rear'])
-      // });
+      public routes: Router,
+      public overlayContainer: OverlayContainer,
+      public nav:NavComponent,
+      public dialog: MatDialog, 
+      private route: ActivatedRoute, 
+      media: MediaMatcher,
+      private analytics: AngularFireAnalytics,
+    ) {
+      this.analytics.logEvent(this.type === 'rear' ? 'sag_open_rear': 'sag_open_front', {"component": "SagComponent"});
+      this.mobileQuery = media.matchMedia('(max-width: 600px)');
    }
 
    public scrollToBottom() {
@@ -159,7 +149,6 @@ export class SagComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      console.log(params.get('type')); 
       this.type = params.get('type');
     });
   }
@@ -167,11 +156,9 @@ export class SagComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   getSagRear(){
-    // console.log(this.sagRearForm.get('sagE').invalid)
     const sagE = this.ra.value-this.rb.value;
     const sagD = this.ra.value-this.rc.value
-    // this.sagRearForm.get('sagE').setValue(sagE);
-    // this.sagRearForm.get('sagD').setValue(sagD);
+
     if(sagE<this.sagEIdealMinRear){
       this.errorSagERear = this.msgLessPre;
       this.dataSourceRear.errorE = true;
@@ -206,11 +193,9 @@ export class SagComponent implements OnInit {
   }
 
   getSagFront(){
-    // console.log(this.sagRearForm.get('sagE').invalid)
     const sagE = this.fa.value-this.fb.value;
     const sagD = this.fa.value-this.fc.value;
-    // this.sagRearForm.get('sagE').setValue(sagE);
-    // this.sagRearForm.get('sagD').setValue(sagD);
+
     if(sagE<this.sagEIdealMinFront){
       this.errorSagEFront = this.msgLessPre;
       this.dataSourceFront.errorE = true;
@@ -253,10 +238,7 @@ export class SagComponent implements OnInit {
   get fc() { return this.sagFrontForm.get('rcFormControl'); }
 
   openDialogSettingSagFront(): void { 
-    console.log('open')
     const dialogRef = this.dialog.open(DialogOverviewDialogFront, {
-      // width: '400px',
-      // data: {name: this.name, animal: this.animal}
       panelClass: this.nav.dark ? 'dark': 'default',
       data: {
         dark : this.nav.dark,
@@ -268,7 +250,6 @@ export class SagComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
       if(result == undefined) return;
       this.sagEIdealMinFront = result.sagEIdealMinFront;
       this.sagEIdealMaxFront = result.sagEIdealMaxFront;
@@ -281,8 +262,6 @@ export class SagComponent implements OnInit {
 
   openDialogSettingSagRear(): void {
     const dialogRef = this.dialog.open(DialogOverviewDialogRear, {
-      // width: '400px',
-      // data: {name: this.name, animal: this.animal}
       panelClass: this.nav.dark ? 'dark': 'default',
       data: {
         dark : this.nav.dark,
@@ -294,8 +273,8 @@ export class SagComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
       if(result == undefined) return;
+      
       this.sagEIdealMinRear = result.sagEIdealMinRear;
       this.sagEIdealMaxRear = result.sagEIdealMaxRear;
       this.sagDIdealMinRear = result.sagDIdealMinRear;
@@ -324,7 +303,11 @@ export class DialogOverviewDialogFront {
 
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewDialogFront>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogDataSagFront) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogDataSagFront, 
+    private analytics: AngularFireAnalytics,
+    ) {
+      this.analytics.logEvent('sag_config_front_open', {"component": "DialogOverviewDialogFront"});
+    }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -352,7 +335,11 @@ export class DialogOverviewDialogRear {
 
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewDialogRear>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogDataSagRear) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogDataSagRear,
+    private analytics: AngularFireAnalytics,
+    ) {
+      this.analytics.logEvent('sag_config_rear_open', {"component": "DialogOverviewDialogRear"});
+    }
 
   onNoClick(): void {
     this.dialogRef.close();

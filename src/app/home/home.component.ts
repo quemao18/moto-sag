@@ -1,5 +1,6 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component, OnInit, ElementRef } from '@angular/core';
+import { AngularFireAnalytics } from '@angular/fire/compat/analytics';
 import { UntypedFormControl, Validators, FormGroupDirective, NgForm, UntypedFormGroup, FormBuilder } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -103,16 +104,9 @@ export class HomeComponent implements OnInit {
 
   });
 
-  constructor(elementRef: ElementRef, public route: Router) {
-    // const hammertime = new Hammer(elementRef.nativeElement, {});
-    // hammertime.on('panright', (ev) => {
-       
-    // });
-    // hammertime.on('panleft', (ev) => {
-    //     this.route.navigate(['sag/front'])
-    // });
-
-   }
+  constructor(public route: Router, private analitycs: AngularFireAnalytics) {
+    this.analitycs.logEvent('home_open', {"component": "HomeComponent"});
+  }
 
   ngOnInit(): void {
   }
