@@ -1,6 +1,7 @@
 {
   "projects": {
-    "default": "moto-sag"
+    "default": "moto-sag",
+    "production": "moto-sag"
   },
   "targets": {
     "moto-sag": {
@@ -10,5 +11,6 @@
         ]
       }
     }
-  }
+  },
+  "etags": {}
 }

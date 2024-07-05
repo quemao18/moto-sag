@@ -126,12 +126,7 @@
         "deploy": {
           "builder": "@angular/fire:deploy",
           "options": {
-              "buildTarget": "motosag:build"
-          },
-          "configurations": {
-              "production": {
-                  "site": "moto-sag"
-              }
+            "buildTarget": "motosag:build:production"
           }
         }
       }
