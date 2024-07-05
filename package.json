@@ -37,9 +37,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "deploy": "ng deploy && npm run post-build",
-    "post-build": "node ./build/post-build.js",
-    "build-fire-old": "ng build --configuration=production --outputHashing=all && npm run post-build && firebase deploy --only hosting:moto-sag",
-    "build-fire": "ng build --configuration=production && firebase deploy --only hosting:moto-sag"
+    "build-fire-deploy": "ng build --configuration=production && firebase deploy --only hosting:moto-sag",
+    "build-prod": "ng build --configuration=production"
   },
   "devDependencies": {
     "@angular-devkit/architect": "^0.1800.7",
