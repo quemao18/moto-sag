@@ -25,5 +25,8 @@
       "src/main.ts",
       "src/polyfills.ts"
     ],
-  "angularCompilerOptions": { "enableIvy": false },
+  "angularCompilerOptions": { 
+    "enableIvy": false,
+    "strictTemplates": true,
+  },
 }
