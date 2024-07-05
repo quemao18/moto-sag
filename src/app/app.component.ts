@@ -31,9 +31,8 @@ export class AppComponent implements OnInit  {
     ]);
 
     //scroll to top
-    this.router.events
-    .subscribe(() => {
-      document.querySelector('.mat-sidenav-content').scrollTop = 0;
+    this.router.events.subscribe(() => {
+      window.scrollTo(0, 0);
     });
 
     this.versionCheckService.initVersionCheck(environment.versionCheckURL);
