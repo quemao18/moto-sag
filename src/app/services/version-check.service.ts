@@ -23,6 +23,7 @@ export class VersionCheckService {
     }
 
     private checkForUpdates(): void {
+        console.log('Check for updates');
         if (this.swUpdate.isEnabled) {
           this.swUpdate.versionUpdates.pipe(
             filter((event): event is VersionReadyEvent => event.type === 'VERSION_READY')
@@ -32,10 +33,6 @@ export class VersionCheckService {
             if (event.currentVersion.hash !== event.latestVersion.hash) {
                 this.openSnackBar();
             }
-
-            // if (confirm("New version available. Load New Version?")) {
-            //     this.openSnackBar();
-            // }
           });
         }
     }
