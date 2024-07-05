@@ -8,13 +8,29 @@
 :root {
   @include mat.all-component-themes(customTheme.$light-theme);
   mat-toolbar {
-    --mat-toolbar-container-background-color: #{mat.get-theme-color(customTheme.$light-theme, primary, 60)};
+    --mat-toolbar-container-background-color: #{mat.get-theme-color(customTheme.$light-theme, primary, 50)};
+    color: #{mat.get-theme-color(customTheme.$light-theme, primary, 100)};
+    mat-icon {
+      color: #{mat.get-theme-color(customTheme.$light-theme, primary, 100)};
+    }
+  }
+  .mat-drawer-inner-container, .mat-drawer-content {
+    background: #{mat.get-theme-color(customTheme.$light-theme, primary, 98)};
+  }
+  .mat-mdc-card {
+    background: #{mat.get-theme-color(customTheme.$light-theme, primary, 100)};
   }
 }
 
 .dark {
   @include mat.all-component-colors(customTheme.$dark-theme);
   mat-toolbar {
-    --mat-toolbar-container-background-color: #{mat.get-theme-color(customTheme.$dark-theme, tertiary, 50)};
+    --mat-toolbar-container-background-color: #{mat.get-theme-color(customTheme.$dark-theme, neutral, 10)};
+  }
+  .mat-mdc-card {
+    background: #{mat.get-theme-color(customTheme.$dark-theme, neutral, 10)};
+  }
+  .mat-drawer-inner-container, .mat-drawer-content {
+    background: #{mat.get-theme-color(customTheme.$dark-theme, neutral, 20)};
   }
 }
