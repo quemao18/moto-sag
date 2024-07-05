@@ -130,7 +130,6 @@
           },
           "configurations": {
               "production": {
-                  "buildTarget": "motosag:build:production",
                   "site": "moto-sag"
               }
           }
