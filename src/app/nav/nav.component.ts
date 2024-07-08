@@ -2,7 +2,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { ChangeDetectorRef, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
-//require hammerjs
 import Hammer from 'hammerjs/hammer';
 
 @Component({
@@ -13,8 +12,7 @@ import Hammer from 'hammerjs/hammer';
 export class NavComponent implements OnDestroy {
 
   mobileQuery: MediaQueryList;
-  @ViewChild(MatSidenav)
-  public snav: MatSidenav;
+  @ViewChild('snav') public snav: MatSidenav;
   public dark: boolean;
   name: string = "Moto SAG";
   lang: string = "es";
