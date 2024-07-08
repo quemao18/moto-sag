@@ -49,4 +49,8 @@ export class NavComponent implements OnDestroy {
   changeLang(lang: string): void {
     this.translate.use(lang);
   }
+
+  openPayPal(): void {  
+    window.open('https://paypal.me/quemao18', '_blank');
+  }
 }

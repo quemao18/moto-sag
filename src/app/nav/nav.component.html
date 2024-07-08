@@ -41,9 +41,9 @@
       </mat-nav-list>
 
       <footer class="footer2">
-        <button mat-stroked-button color="primary" href="https://paypal.me/quemao18" target="_blank" class="donate-button">
+        <button mat-stroked-button color="primary" (click)="openPayPal()" class="donate-button">
           <div class="donate-container">
-            <a  href="https://paypal.me/quemao18" target="_blank">
+            <a>
               <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-mark-color.svg" height="30px" alt="PayPal">
             </a>
             <span>{{ 'HOME.PAYPAL_TEXT' | translate }}</span>
