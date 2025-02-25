@@ -1,5 +1,5 @@
-import { Component, OnInit, Inject, ChangeDetectorRef, ElementRef } from '@angular/core';
-import { UntypedFormControl, Validators, FormGroupDirective, NgForm, UntypedFormGroup, FormsModule } from '@angular/forms';
+import { Component, OnInit, inject, } from '@angular/core';
+import { UntypedFormControl, Validators, FormGroupDirective, NgForm, UntypedFormGroup } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router, } from '@angular/router';
@@ -10,47 +10,48 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { AngularFireAnalytics } from '@angular/fire/compat/analytics';
 
 export interface DialogDataSagFront {
-  sagEIdealMinFront:number;
-  sagEIdealMaxFront:number;
-  sagDIdealMinFront:number;
-  sagDIdealMaxFront:number;
+  sagEIdealMinFront: number | null;
+  sagEIdealMaxFront: number | null;
+  sagDIdealMinFront: number | null;
+  sagDIdealMaxFront: number | null;
   dark: boolean;
 }
 
 export interface DialogDataSagRear {
-  sagEIdealMinRear:number;
-  sagEIdealMaxRear:number;
-  sagDIdealMinRear:number;
-  sagDIdealMaxRear:number;
+  sagEIdealMinRear:number | null;
+  sagEIdealMaxRear:number | null;
+  sagDIdealMinRear:number | null;
+  sagDIdealMaxRear:number | null;
   dark: boolean;
 }
 
 @Component({
-  selector: 'app-sag',
-  templateUrl: './sag.component.html',
-  styleUrls: ['./sag.component.css'],
-  animations: [
-    trigger('animate', [
-      state('*', style({
-        transform: 'translate3D(0px, 0px, 0px)',
-        opacity: 1
-      })),
-      transition('void => *', [
-        style({opacity: 0,
-          transform: 'translate3D(0px, 150px, 0px)',
-        }),
-        animate('0.3s 0s ease-out'),
-      ])
-    ]),
-    trigger('flip', [
-      transition('void => *', [
-        style({opacity: 0,
-          transform: 'rotateY(180deg)',
-        }),
-        animate('0.3s 0s ease-out'),
-      ])
-    ])  
-  ],
+    selector: 'app-sag',
+    templateUrl: './sag.component.html',
+    styleUrls: ['./sag.component.css'],
+    animations: [
+        trigger('animate', [
+            state('*', style({
+                transform: 'translate3D(0px, 0px, 0px)',
+                opacity: 1
+            })),
+            transition('void => *', [
+                style({ opacity: 0,
+                    transform: 'translate3D(0px, 150px, 0px)',
+                }),
+                animate('0.3s 0s ease-out'),
+            ])
+        ]),
+        trigger('flip', [
+            transition('void => *', [
+                style({ opacity: 0,
+                    transform: 'rotateY(180deg)',
+                }),
+                animate('0.3s 0s ease-out'),
+            ])
+        ])
+    ],
+    standalone: false
 })
 export class SagComponent implements OnInit {
 
@@ -140,24 +141,22 @@ export class SagComponent implements OnInit {
       this.mobileQuery = media.matchMedia('(max-width: 600px)');
    }
 
-   public scrollToBottom() {
-     setTimeout(() => {
-      document.querySelector('.mat-sidenav-content').scrollTop = document.querySelector('.mat-sidenav-content').scrollHeight;
-     }, 0);
-    
+   scrollToBottom(): void {
+    const element = document.getElementById('yourElementId');
+    element!.scrollTop = element!.scrollHeight;
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.type = params.get('type');
+      this.type = params.get('type') || 'front';
     });
   }
 
   matcher = new MyErrorStateMatcher();
 
   getSagRear(){
-    const sagE = this.ra.value-this.rb.value;
-    const sagD = this.ra.value-this.rc.value
+    const sagE = this.ra-this.rb;
+    const sagD = this.ra-this.rc
 
     if(sagE<this.sagEIdealMinRear){
       this.errorSagERear = this.msgLessPre;
@@ -193,8 +192,8 @@ export class SagComponent implements OnInit {
   }
 
   getSagFront(){
-    const sagE = this.fa.value-this.fb.value;
-    const sagD = this.fa.value-this.fc.value;
+    const sagE = this.fa-this.fb;
+    const sagD = this.fa-this.fc;
 
     if(sagE<this.sagEIdealMinFront){
       this.errorSagEFront = this.msgLessPre;
@@ -229,13 +228,13 @@ export class SagComponent implements OnInit {
     this.scrollToBottom();
   }
   
-  get ra() { return this.sagRearForm.get('raFormControl'); }
-  get rb() { return this.sagRearForm.get('rbFormControl'); }
-  get rc() { return this.sagRearForm.get('rcFormControl'); }
+  get ra() { return this.sagRearForm.get('raFormControl')?.value || 0; }
+  get rb() { return this.sagRearForm.get('rbFormControl')?.value || 0; }
+  get rc() { return this.sagRearForm.get('rcFormControl')?.value || 0; }
 
-  get fa() { return this.sagFrontForm.get('raFormControl'); }
-  get fb() { return this.sagFrontForm.get('rbFormControl'); }
-  get fc() { return this.sagFrontForm.get('rcFormControl'); }
+  get fa() { return this.sagFrontForm.get('raFormControl')?.value || 0; }
+  get fb() { return this.sagFrontForm.get('rbFormControl')?.value || 0; }
+  get fc() { return this.sagFrontForm.get('rcFormControl')?.value || 0; }
 
   openDialogSettingSagFront(): void { 
     const dialogRef = this.dialog.open(DialogOverviewDialogFront, {
@@ -295,15 +294,17 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-sag-setting-front.html',
-  styleUrls: ['./sag.component.css']
+    selector: 'dialog-overview-example-dialog',
+    templateUrl: 'dialog-sag-setting-front.html',
+    styleUrls: ['./sag.component.css'],
+    standalone: false
 })
 export class DialogOverviewDialogFront {
 
+  readonly dialogRef = inject(MatDialogRef<DialogDataSagFront>);
+  readonly data = inject<DialogDataSagFront>(MAT_DIALOG_DATA);
+
   constructor(
-    public dialogRef: MatDialogRef<DialogOverviewDialogFront>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogDataSagFront, 
     private analytics: AngularFireAnalytics,
     ) {
       this.analytics.logEvent('sag_config_front_open', {"component": "DialogOverviewDialogFront"});
@@ -313,7 +314,7 @@ export class DialogOverviewDialogFront {
     this.dialogRef.close();
   }
 
-  check(data){
+  check(data: DialogDataSagFront): boolean {
     if( 
     data.sagEIdealMinFront == null ||
     data.sagEIdealMaxFront == null ||
@@ -327,15 +328,17 @@ export class DialogOverviewDialogFront {
 }
 
 @Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-sag-setting-rear.html',
-  styleUrls: ['./sag.component.css'],
+    selector: 'dialog-overview-example-dialog',
+    templateUrl: 'dialog-sag-setting-rear.html',
+    styleUrls: ['./sag.component.css'],
+    standalone: false
 })
 export class DialogOverviewDialogRear {
 
+  readonly dialogRef = inject(MatDialogRef<DialogDataSagRear>);
+  readonly data = inject<DialogDataSagRear>(MAT_DIALOG_DATA);
+
   constructor(
-    public dialogRef: MatDialogRef<DialogOverviewDialogRear>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogDataSagRear,
     private analytics: AngularFireAnalytics,
     ) {
       this.analytics.logEvent('sag_config_rear_open', {"component": "DialogOverviewDialogRear"});
@@ -345,7 +348,7 @@ export class DialogOverviewDialogRear {
     this.dialogRef.close();
   }
 
-  check(data){
+  check(data: DialogDataSagRear): boolean {
     if( 
     data.sagEIdealMinRear == null ||
     data.sagEIdealMaxRear == null ||
