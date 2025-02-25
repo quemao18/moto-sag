@@ -26,31 +26,32 @@ export interface DialogDataSagRear {
 }
 
 @Component({
-  selector: 'app-sag',
-  templateUrl: './sag.component.html',
-  styleUrls: ['./sag.component.css'],
-  animations: [
-    trigger('animate', [
-      state('*', style({
-        transform: 'translate3D(0px, 0px, 0px)',
-        opacity: 1
-      })),
-      transition('void => *', [
-        style({opacity: 0,
-          transform: 'translate3D(0px, 150px, 0px)',
-        }),
-        animate('0.3s 0s ease-out'),
-      ])
-    ]),
-    trigger('flip', [
-      transition('void => *', [
-        style({opacity: 0,
-          transform: 'rotateY(180deg)',
-        }),
-        animate('0.3s 0s ease-out'),
-      ])
-    ])  
-  ],
+    selector: 'app-sag',
+    templateUrl: './sag.component.html',
+    styleUrls: ['./sag.component.css'],
+    animations: [
+        trigger('animate', [
+            state('*', style({
+                transform: 'translate3D(0px, 0px, 0px)',
+                opacity: 1
+            })),
+            transition('void => *', [
+                style({ opacity: 0,
+                    transform: 'translate3D(0px, 150px, 0px)',
+                }),
+                animate('0.3s 0s ease-out'),
+            ])
+        ]),
+        trigger('flip', [
+            transition('void => *', [
+                style({ opacity: 0,
+                    transform: 'rotateY(180deg)',
+                }),
+                animate('0.3s 0s ease-out'),
+            ])
+        ])
+    ],
+    standalone: false
 })
 export class SagComponent implements OnInit {
 
@@ -293,9 +294,10 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-sag-setting-front.html',
-  styleUrls: ['./sag.component.css']
+    selector: 'dialog-overview-example-dialog',
+    templateUrl: 'dialog-sag-setting-front.html',
+    styleUrls: ['./sag.component.css'],
+    standalone: false
 })
 export class DialogOverviewDialogFront {
 
@@ -326,9 +328,10 @@ export class DialogOverviewDialogFront {
 }
 
 @Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-sag-setting-rear.html',
-  styleUrls: ['./sag.component.css'],
+    selector: 'dialog-overview-example-dialog',
+    templateUrl: 'dialog-sag-setting-rear.html',
+    styleUrls: ['./sag.component.css'],
+    standalone: false
 })
 export class DialogOverviewDialogRear {
 

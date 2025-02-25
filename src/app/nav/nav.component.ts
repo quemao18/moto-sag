@@ -5,9 +5,10 @@ import { MatSidenav } from '@angular/material/sidenav';
 import Hammer from 'hammerjs/hammer';
 
 @Component({
-  selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css'],
+    selector: 'app-nav',
+    templateUrl: './nav.component.html',
+    styleUrls: ['./nav.component.css'],
+    standalone: false
 })
 export class NavComponent implements OnDestroy {
 
