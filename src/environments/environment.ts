@@ -11,8 +11,8 @@ export const environment = {
     projectId: "moto-sag",
     storageBucket: "moto-sag.appspot.com",
     messagingSenderId: "635626247891",
-    appId: "1:635626247891:web:048857f47c8cbc0c13a626",
-    measurementId: "G-88JVHB7H9D"  
+    appId: "1:635626247891:web:15ac8120ea3d34c513a626",
+    measurementId: "G-21L4CVZ4DE"
   },
   versionCheckURL : 'https://moto-sag.web.app/version.json'
 };
