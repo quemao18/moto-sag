@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Meta } from "@angular/platform-browser";
 import { Router } from "@angular/router";
-import { VersionCheckService } from "./services/version-check.service";
+// import { VersionCheckService } from "./services/version-check.service";
 import { AngularFireAnalytics } from "@angular/fire/compat/analytics";
 
 @Component({
@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   constructor(
     private metaService: Meta,
     private router: Router,
-    private versionCheckService: VersionCheckService,
+    // private versionCheckService: VersionCheckService,
     private analytics: AngularFireAnalytics
   ) {
     this.analytics.logEvent("app_open", { component: "AppComponent" });

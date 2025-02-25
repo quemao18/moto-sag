@@ -1,7 +1,6 @@
 <div class="example-container" [class.dark]="dark" fxLayout="column" fxFlexFill>
   <mat-toolbar color="primary" class="example-toolbar elevation4">
-    <button mat-icon-button 
-      (click)="snav.toggle()">
+    <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
     <h1 class="example-app-name">{{name}}</h1>
@@ -18,19 +17,17 @@
       </button>
     </mat-menu>
     <button mat-icon-button (click)="dark=!dark">
-      <mat-icon class="example-icon" aria-hidden="false" aria-label="Change theme">{{dark ?
-        'wb_sunny':'nights_stay'}}</mat-icon>
+      <mat-icon class="example-icon" inert aria-label="Change theme">
+        {{dark ? 'wb_sunny':'nights_stay'}}
+      </mat-icon>
     </button>
   </mat-toolbar>
 
   <mat-drawer-container class="example-sidenav-container">
-    <mat-drawer
-      [opened]="mobileQuery.matches ? 'false' : 'true'"
-      style="width:250px; text-align: center; border-right:solid 1px #ccc; border-radius: 0;" 
-      #snav 
-      [mode]="mobileQuery.matches ? 'over' : 'side'"
-      [style.marginTop.px]="mobileQuery.matches ? 0 : 0" [style.marginBottom.px]="mobileQuery.matches ? 0 : 0"
-    >
+    <mat-drawer [opened]="mobileQuery.matches ? 'false' : 'true'"
+      style="width:250px; text-align: center; border-right:solid 1px #ccc; border-radius: 0;" #snav
+      [mode]="mobileQuery.matches ? 'over' : 'side'" [style.marginTop.px]="mobileQuery.matches ? 0 : 0"
+      [style.marginBottom.px]="mobileQuery.matches ? 0 : 0">
       <mat-nav-list>
         <a (click)="mobileQuery.matches ? snav.close() : ''" mat-list-item routerLinkActive="active" routerLink="/home"
           href="#">{{ 'HOME.INFO' | translate }}</a>
@@ -44,7 +41,8 @@
         <button mat-stroked-button color="primary" (click)="openPayPal()" class="donate-button">
           <div class="donate-container">
             <a>
-              <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-mark-color.svg" height="30px" alt="PayPal">
+              <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-mark-color.svg" height="30px"
+                alt="PayPal">
             </a>
             <span>{{ 'HOME.PAYPAL_TEXT' | translate }}</span>
           </div>

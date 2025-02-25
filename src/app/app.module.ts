@@ -14,7 +14,7 @@ import {
   DialogOverviewDialogFront,
   DialogOverviewDialogRear,
 } from "./sag/sag.component";
-import { environment } from "src/environments/environment";
+import { environment } from "../environments/environment";
 
 import {
   ScreenTrackingService,
