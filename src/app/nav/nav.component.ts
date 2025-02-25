@@ -5,9 +5,10 @@ import { MatSidenav } from '@angular/material/sidenav';
 import Hammer from 'hammerjs/hammer';
 
 @Component({
-  selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css'],
+    selector: 'app-nav',
+    templateUrl: './nav.component.html',
+    styleUrls: ['./nav.component.css'],
+    standalone: false
 })
 export class NavComponent implements OnDestroy {
 
@@ -37,7 +38,7 @@ export class NavComponent implements OnDestroy {
     translate.addLangs(['en', 'es', 'it', 'fr']);
     translate.setDefaultLang('en');
     
-    const browserLang = translate.getBrowserLang();
+    const browserLang = translate.getBrowserLang() || 'es';
     this.lang = browserLang;
     translate.use(browserLang.match(/en|es/) ? browserLang : 'es');
   }
