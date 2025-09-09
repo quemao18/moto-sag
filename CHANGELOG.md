@@ -1,8 +1,10 @@
 # Changelog
 
-## 0.20.0 (2024-06-13)
+## 0.21.0 (2025-09-09)
 
-### Breaking Changes
+- **lang:** Add new language Brasil
+
+## 0.20.0 (2025-09-09)
 
 - **angular:** Updated to Angular 20, Angular CLI 20, Material 20, and main dependencies
 - **build:** Removed obsolete dependencies and migrated build tools
