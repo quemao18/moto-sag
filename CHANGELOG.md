@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.22.0 (2025-09-09)
+
+- **angular:** Migrate components to standalone
+
 ## 0.21.0 (2025-09-09)
 
 - **lang:** Add new language Brasil
