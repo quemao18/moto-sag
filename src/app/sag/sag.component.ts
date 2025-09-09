@@ -1,5 +1,8 @@
 import { Component, OnInit, inject, } from '@angular/core';
-import { UntypedFormControl, Validators, FormGroupDirective, NgForm, UntypedFormGroup } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormsModule, UntypedFormControl, Validators, FormGroupDirective, NgForm, UntypedFormGroup } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
+import { MaterialModule } from '../material.module';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router, } from '@angular/router';
@@ -51,7 +54,8 @@ export interface DialogDataSagRear {
             ])
         ])
   ],
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, TranslateModule, MaterialModule],
 })
 export class SagComponent implements OnInit {
 
@@ -297,7 +301,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     selector: 'dialog-overview-example-dialog',
     templateUrl: 'dialog-sag-setting-front.html',
     styleUrls: ['./sag.component.css'],
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, FormsModule, TranslateModule, MaterialModule],
 })
 export class DialogOverviewDialogFront {
 
@@ -331,7 +336,8 @@ export class DialogOverviewDialogFront {
     selector: 'dialog-overview-example-dialog',
     templateUrl: 'dialog-sag-setting-rear.html',
     styleUrls: ['./sag.component.css'],
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, FormsModule, TranslateModule, MaterialModule],
 })
 export class DialogOverviewDialogRear {
 
