@@ -35,12 +35,12 @@ export class NavComponent implements OnDestroy {
       this.snav.close();
     });
 
-    translate.addLangs(['en', 'es', 'it', 'fr']);
+    translate.addLangs(['en', 'es', 'it', 'fr', 'br']);
     translate.setDefaultLang('en');
     
     const browserLang = translate.getBrowserLang() || 'es';
     this.lang = browserLang;
-    translate.use(browserLang.match(/en|es/) ? browserLang : 'es');
+    translate.use(browserLang.match(/en|es|it|fr|br/) ? browserLang : 'es');
   }
 
   ngOnDestroy(): void {
