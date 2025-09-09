@@ -11,13 +11,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": {
-              "base": "dist",
-              "browser": ""
-            },
+            "outputPath": "dist/moto-sag",
             "index": "src/index.html",
+            "main": "src/main.ts",
             "polyfills": [
               "src/polyfills.ts"
             ],
@@ -43,8 +41,7 @@
             "extractLicenses": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true,
-            "browser": "src/main.ts"
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -71,7 +68,8 @@
                   "maximumError": "10kb"
                 }
               ],
-              "serviceWorker": "ngsw-config.json"
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
             }
           },
           "defaultConfiguration": ""

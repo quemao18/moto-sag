@@ -1,5 +1,5 @@
 import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { platformBrowser } from '@angular/platform-browser';
 import { environment } from './environments/environment';
 
 import { AppModule } from './app/app.module';
@@ -8,11 +8,9 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule).then(()=>{
-  if ('serviceWorker' in navigator && environment.production) {
-    navigator.serviceWorker.register('ngsw-worker.js');
-  }
-}).catch(err => console.error(err));
+// Keep NgModule bootstrap while using the recommended platformBrowser API (no deprecation).
+platformBrowser().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
 
 
 /*

@@ -8,7 +8,7 @@ import Hammer from 'hammerjs/hammer';
     selector: 'app-nav',
     templateUrl: './nav.component.html',
     styleUrls: ['./nav.component.css'],
-    standalone: false
+    standalone: false,
 })
 export class NavComponent implements OnDestroy {
 

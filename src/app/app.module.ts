@@ -24,16 +24,11 @@ import { AngularFireAnalyticsModule } from "@angular/fire/compat/analytics";
 import { AngularFireModule } from "@angular/fire/compat";
 
 import { VersionCheckService } from "./services/version-check.service";
-import {
-  HttpClient,
-  provideHttpClient,
-  withInterceptorsFromDi,
-} from "@angular/common/http";
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { ServiceWorkerModule } from "@angular/service-worker";
 import { PrivacyComponent } from "./privacy/privacy.component";
-import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -79,7 +74,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: "registerWhenStable:30000",
+      // For easier local testing, register immediately so SwUpdate is ready sooner.
+      registrationStrategy: "registerImmediately",
     }),
   ],
   providers: [
@@ -91,10 +87,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ScreenTrackingService,
     UserTrackingService,
     provideHttpClient(withInterceptorsFromDi()),
-    provideAnimationsAsync(),
   ],
 })
-export class AppModule {}
+export class AppModule { }
 
 /*
 Copyright Google LLC. All Rights Reserved.

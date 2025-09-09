@@ -1,9 +1,9 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFireAnalytics } from '@angular/fire/compat/analytics';
-import { UntypedFormControl, Validators, FormGroupDirective, NgForm, UntypedFormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormControl, Validators, FormGroupDirective, NgForm, UntypedFormGroup } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-home',
@@ -31,7 +31,7 @@ import { ActivatedRoute, Router } from '@angular/router';
             ])
         ])
     ],
-    standalone: false
+  standalone: false,
 })
 export class HomeComponent implements OnInit {
 
@@ -109,17 +109,14 @@ export class HomeComponent implements OnInit {
     this.analitycs.logEvent('home_open', {"component": "HomeComponent"});
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   matcher = new MyErrorStateMatcher();
 
   getSagRear(){
-    // console.log(this.sagRearForm.get('sagE').invalid)
-    const sagE = this.ra.value-this.rb.value;
-    const sagD = this.ra.value-this.rc.value
-    // this.sagRearForm.get('sagE').setValue(sagE);
-    // this.sagRearForm.get('sagD').setValue(sagD);
+    const sagE = this.ra?.value-this.rb?.value;
+    const sagD = this.ra?.value-this.rc?.value
+
     if(sagE<this.sagEIdealMinRear){
       this.errorSagERear = this.msgLessPre;
       this.dataSourceRear.errorE = true;
@@ -154,11 +151,9 @@ export class HomeComponent implements OnInit {
   }
 
   getSagFront(){
-    // console.log(this.sagRearForm.get('sagE').invalid)
-    const sagE = this.fa.value-this.fb.value;
-    const sagD = this.fa.value-this.fc.value
-    // this.sagRearForm.get('sagE').setValue(sagE);
-    // this.sagRearForm.get('sagD').setValue(sagD);
+    const sagE = this.fa?.value-this.fb?.value;
+    const sagD = this.fa?.value-this.fc?.value
+
     if(sagE<this.sagEIdealMinFront){
       this.errorSagEFront = this.msgLessPre;
       this.dataSourceFront.errorE = true;

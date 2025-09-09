@@ -50,8 +50,8 @@ export interface DialogDataSagRear {
                 animate('0.3s 0s ease-out'),
             ])
         ])
-    ],
-    standalone: false
+  ],
+  standalone: false,
 })
 export class SagComponent implements OnInit {
 
@@ -297,7 +297,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     selector: 'dialog-overview-example-dialog',
     templateUrl: 'dialog-sag-setting-front.html',
     styleUrls: ['./sag.component.css'],
-    standalone: false
+  standalone: false,
 })
 export class DialogOverviewDialogFront {
 
@@ -331,7 +331,7 @@ export class DialogOverviewDialogFront {
     selector: 'dialog-overview-example-dialog',
     templateUrl: 'dialog-sag-setting-rear.html',
     styleUrls: ['./sag.component.css'],
-    standalone: false
+  standalone: false,
 })
 export class DialogOverviewDialogRear {
 

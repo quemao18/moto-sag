@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "moto-sag",
-      "public": "dist",
+  "public": "dist/moto-sag",
       "ignore": [
         "firebase.json",
         "**/.*",

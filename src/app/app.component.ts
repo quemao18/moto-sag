@@ -1,20 +1,20 @@
 import { Component, OnInit } from "@angular/core";
 import { Meta } from "@angular/platform-browser";
 import { Router } from "@angular/router";
-// import { VersionCheckService } from "./services/version-check.service";
+import { VersionCheckService } from "./services/version-check.service";
 import { AngularFireAnalytics } from "@angular/fire/compat/analytics";
 
 @Component({
-    selector: "app-root",
-    templateUrl: "./app.component.html",
-    styleUrls: ["./app.component.css"],
-    standalone: false
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
+  standalone: false,
 })
 export class AppComponent implements OnInit {
   constructor(
     private metaService: Meta,
     private router: Router,
-    // private versionCheckService: VersionCheckService,
+    public versionCheckService: VersionCheckService,
     private analytics: AngularFireAnalytics
   ) {
     this.analytics.logEvent("app_open", { component: "AppComponent" });
