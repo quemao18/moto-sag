@@ -3,12 +3,16 @@ import { Meta } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 import { VersionCheckService } from "./services/version-check.service";
 import { AngularFireAnalytics } from "@angular/fire/compat/analytics";
+import { NavComponent } from "./nav/nav.component";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
-  standalone: false,
+  standalone: true,
+  imports: [
+    NavComponent,
+  ]
 })
 export class AppComponent implements OnInit {
   constructor(

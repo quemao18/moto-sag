@@ -1,9 +1,12 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { AngularFireAnalytics } from '@angular/fire/compat/analytics';
 import { UntypedFormControl, Validators, FormGroupDirective, NgForm, UntypedFormGroup } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { MaterialModule } from '../material.module';
 
 @Component({
     selector: 'app-home',
@@ -31,9 +34,10 @@ import { Router } from '@angular/router';
             ])
         ])
     ],
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, RouterModule, TranslateModule, MaterialModule],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
   sagEIdealMinRear = 30;
   sagEIdealMaxRear = 40;
@@ -108,8 +112,6 @@ export class HomeComponent implements OnInit {
   constructor(public route: Router, private analitycs: AngularFireAnalytics) {
     this.analitycs.logEvent('home_open', {"component": "HomeComponent"});
   }
-
-  ngOnInit(): void {}
 
   matcher = new MyErrorStateMatcher();
 

@@ -2,18 +2,13 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NavComponent } from "./nav/nav.component";
 import { LayoutModule } from "@angular/cdk/layout";
 import { HomeComponent } from "./home/home.component";
 import { MaterialModule } from "./material.module";
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from "@angular/material/form-field";
-import {
-  SagComponent,
-  DialogOverviewDialogFront,
-  DialogOverviewDialogRear,
-} from "./sag/sag.component";
+import { SagComponent } from "./sag/sag.component";
 import { environment } from "../environments/environment";
 
 import {
@@ -43,16 +38,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    NavComponent,
-    SagComponent,
-    DialogOverviewDialogFront,
-    DialogOverviewDialogRear,
-    PrivacyComponent,
-  ],
-  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
@@ -70,6 +55,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         deps: [HttpClient],
       },
     }),
+  NavComponent,
     ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable

@@ -1,14 +1,32 @@
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { ChangeDetectorRef, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { MatSidenav } from '@angular/material/sidenav';
+import { MatSidenavModule, MatSidenav } from '@angular/material/sidenav';
 import Hammer from 'hammerjs/hammer';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
     selector: 'app-nav',
     templateUrl: './nav.component.html',
     styleUrls: ['./nav.component.css'],
-    standalone: false,
+  standalone: true,
+    imports: [    
+      CommonModule,
+      RouterModule,
+      TranslateModule,
+      MatToolbarModule,
+      MatSidenavModule,
+      MatIconModule,
+      MatMenuModule,
+      MatListModule,
+      MatButtonModule,
+    ],
 })
 export class NavComponent implements OnDestroy {
 
