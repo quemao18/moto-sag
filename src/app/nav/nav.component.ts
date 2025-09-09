@@ -2,7 +2,7 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
 import { ChangeDetectorRef, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenavModule, MatSidenav } from '@angular/material/sidenav';
-import Hammer from 'hammerjs/hammer';
+import * as Hammer from 'hammerjs';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -37,19 +37,20 @@ export class NavComponent implements OnDestroy {
   lang: string = "es";
   
   private _mobileQueryListener: () => void;
+  private hammertime: any;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, elementRef: ElementRef, public translate: TranslateService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addEventListener('change', this._mobileQueryListener);
     
-    const hammertime = new Hammer(elementRef.nativeElement);
-    hammertime.get('pan').set({ direction: Hammer.DIRECTION_HORIZONTAL });
+  this.hammertime = new (Hammer as any)(elementRef.nativeElement);
+  this.hammertime.get('pan').set({ direction: (Hammer as any).DIRECTION_HORIZONTAL });
 
-    hammertime.on('panright', (ev) => {
+  this.hammertime.on('panright', (ev: any) => {
       this.snav.open();
     });
-    hammertime.on('panleft', (ev) => {
+  this.hammertime.on('panleft', (ev: any) => {
       this.snav.close();
     });
 
@@ -63,6 +64,11 @@ export class NavComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.mobileQuery.removeEventListener('change', this._mobileQueryListener);
+    try {
+      this.hammertime?.off('panright');
+      this.hammertime?.off('panleft');
+      this.hammertime?.destroy();
+    } catch {}
   }
 
   changeLang(lang: string): void {
