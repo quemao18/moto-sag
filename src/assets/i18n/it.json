@@ -72,5 +72,14 @@
     "ERROR":{
         "ERROR_1": "Immettere un valore valido",
         "REQUIRED": "Obbligatorio"
+    },
+    "COOKIE": {
+        "TITLE": "La tua privacy",
+        "TEXT": "Utilizziamo cookie necessari per il funzionamento del sito e facoltativamente analitici per migliorare l'esperienza.",
+        "NECESSARY": "Necessari (sempre attivi)",
+        "ANALYTICS": "Analitici (aiuta a migliorare)",
+        "ACCEPT_ALL": "Accetta",
+        "REJECT_ALL": "Rifiuta",
+        "SAVE": "Salva selezione"
     }
   }

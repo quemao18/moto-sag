@@ -4,6 +4,8 @@ import { Router } from "@angular/router";
 import { VersionCheckService } from "./services/version-check.service";
 import { AngularFireAnalytics } from "@angular/fire/compat/analytics";
 import { NavComponent } from "./nav/nav.component";
+import { CookieConsentBannerComponent } from './cookie-consent-banner/cookie-consent-banner.component';
+import { CookieConsentService } from './services/cookie-consent.service';
 
 @Component({
   selector: "app-root",
@@ -12,6 +14,7 @@ import { NavComponent } from "./nav/nav.component";
   standalone: true,
   imports: [
     NavComponent,
+    CookieConsentBannerComponent
   ]
 })
 export class AppComponent implements OnInit {
@@ -19,9 +22,14 @@ export class AppComponent implements OnInit {
     private metaService: Meta,
     private router: Router,
     public versionCheckService: VersionCheckService,
-    private analytics: AngularFireAnalytics
+    private analytics: AngularFireAnalytics,
+    private cookieConsent: CookieConsentService
   ) {
-    this.analytics.logEvent("app_open", { component: "AppComponent" });
+    this.cookieConsent.consent$.subscribe(state => {
+      if (state?.choices.analytics) {
+        this.analytics.logEvent("app_open", { component: "AppComponent" });
+      }
+    });
   }
 
   ngOnInit() {
