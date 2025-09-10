@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.22.1 (2025-09-09)
+
+- **hammer:** Fix hammer
+
 ## 0.22.0 (2025-09-09)
 
 - **angular:** Migrate components to standalone
