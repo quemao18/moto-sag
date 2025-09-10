@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.23.0 (2025-09-10)
+
+- **cookies:** Add cookies consent
+
 ## 0.22.1 (2025-09-09)
 
 - **hammer:** Fix hammer
