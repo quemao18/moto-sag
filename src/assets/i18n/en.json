@@ -1,5 +1,5 @@
 {
-    "HOME":{
+    "HOME": {
         "TITLE": "SAG (Shock Absorber Group)",
         "SUB_TITLE": "SAG explanation.",
         "INFO": "Information",
@@ -20,7 +20,7 @@
         "SAMPLE_3_TEXT_3": "Dynamic SAG => RA - RC = 600-495 = 105mm (correct preload)",
         "PAYPAL_TEXT": "Give me a coffee"
     },
-    "SAG":{
+    "SAG": {
         "BENCH": "In the Bank",
         "BENCH_R": "RA => Rear A, Rear measurement with the bike mounted on a bench.",
         "BENCH_F": "FA => Front A, Front measurement with the bike mounted on a bench.",
@@ -47,7 +47,7 @@
         "RECOMENDED_F": "Recommended Front SAG",
         "RECOMENDED_R": "Recommended Rear SAG",
         "MANUAL": "Check the manual of your bike for the correct SAG",
-        "MIN":"Minimum",
+        "MIN": "Minimum",
         "MAX": "Maximum",
         "DINAMIC": "Dynamic SAG",
         "STATIC": "Static SAG",
@@ -69,8 +69,17 @@
         "LESS_PRE": "Decrease preload, loosen/change spring",
         "OK_PRE": "Correct Preload"
     },
-    "ERROR":{
+    "ERROR": {
         "ERROR_1": "Enter a valid value",
         "REQUIRED": "Required"
+    },
+    "COOKIE": {
+        "TITLE": "Your privacy",
+        "TEXT": "We use necessary cookies for site operation and optional analytics to improve your experience.",
+        "NECESSARY": "Necessary (always active)",
+        "ANALYTICS": "Analytics (helps us improve)",
+        "ACCEPT_ALL": "Accept",
+        "REJECT_ALL": "Reject",
+        "SAVE": "Save selection"
     }
-  }
+}

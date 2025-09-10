@@ -72,5 +72,14 @@
     "ERROR":{
         "ERROR_1": "Entrez une valeur valide",
         "REQUIRED": "Obligatoire"
+    },
+    "COOKIE": {
+        "TITLE": "Votre vie privée",
+        "TEXT": "Nous utilisons des cookies nécessaires au fonctionnement du site et éventuellement des analyses pour améliorer votre expérience.",
+        "NECESSARY": "Nécessaire (toujours actif)",
+        "ANALYTICS": "Analytique (nous aide à nous améliorer)",
+        "ACCEPT_ALL": "Accepter",
+        "REJECT_ALL": "Rejeter",
+        "SAVE": "Enregistrer la sélection"
     }
   }

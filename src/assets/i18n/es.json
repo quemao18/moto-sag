@@ -1,4 +1,3 @@
-  
 {
     "HOME": {
         "TITLE": "SAG (Shock Absorber Group)",
@@ -48,7 +47,7 @@
         "RECOMENDED_F": "SAG Delantero recomendado",
         "RECOMENDED_R": "SAG Trasero recomendado",
         "MANUAL": "Verifica el manual de tu moto para el SAG correcto",
-        "MIN":"Mínimo",
+        "MIN": "Mínimo",
         "MAX": "Máximo",
         "DINAMIC": "SAG Dinámico",
         "STATIC": "SAG Estático",
@@ -73,5 +72,14 @@
     "ERROR": {
         "ERROR_1": "Introduce un valor válido",
         "REQUIRED": "Requerido"
+    },
+    "COOKIE": {
+        "TITLE": "Tu privacidad",
+        "TEXT": "Usamos cookies necesarias para el funcionamiento del sitio y opcionalmente analíticas para mejorar la experiencia.",
+        "NECESSARY": "Necesarias (siempre activas)",
+        "ANALYTICS": "Analítica (ayuda a mejorar)",
+        "ACCEPT_ALL": "Aceptar",
+        "REJECT_ALL": "Rechazar",
+        "SAVE": "Guardar selección"
     }
-  }
+}
