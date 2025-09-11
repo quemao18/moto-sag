@@ -49,7 +49,7 @@
         "MANUAL": "Check the manual of your bike for the correct SAG",
         "MIN": "Minimum",
         "MAX": "Maximum",
-        "DINAMIC": "Dynamic SAG",
+        "DYNAMIC": "Dynamic SAG",
         "STATIC": "Static SAG",
         "SAVE": "Apply",
         "CLOSE": "Close",
