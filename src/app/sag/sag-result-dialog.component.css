@@ -1,0 +1,73 @@
+.example-card {
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.myGridList {
+  height: 100%;
+}
+
+.text-inside-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  line-height: 1.7;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+
+.example-form {
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.example-full-width-50 {
+  width: 50%;
+}
+
+
+td {
+  padding-right: 8px;
+
+}
+
+.mat-suffix {
+  color: #ccc;
+  margin-right: 8px;
+}
+
+.example-container {
+  padding: 24px;
+  width: 500px;
+}
+
+@media screen and (max-width: 600px) {
+  .example-card {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  td {
+    display: inline-flex;
+    width: 100%;
+  }
+  .example-container {
+    padding: 16px;
+    width: 100%;
+  }
+}

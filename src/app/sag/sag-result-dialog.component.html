@@ -1,0 +1,47 @@
+<mat-card [@flip] class="example-card">
+    <div mat-dialog-content class="example-container">
+        <mat-card-header>
+            <mat-card-title [style.color]="data.dark ? 'white': 'black'">
+                {{ 'SAG.RESULTS' | translate }} {{ data.title | translate }}
+            </mat-card-title>
+            <mat-card-subtitle>{{ 'SAG.VALUES' | translate }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <br>
+            <mat-grid-list cols="1" rowHeight="140px">
+                <mat-grid-tile [style.background]="data.errorE ? '#FFCDD2':'#DCEDC8'"
+                    [style.color]="data.errorE ? 'red': 'green'">
+                    <div class="text-inside-grid">
+                        <span style="font-size: 1.5em; font-weight: 600;">
+                            {{ 'SAG.STATIC' | translate }}
+                        </span>
+                        <span style="font-size: 1.8em; font-weight: bold;">
+                            {{data.sagE}}mm
+                        </span>
+                        <span style="font-size: 1em;">
+                            {{data.msgE | translate}}
+                        </span>
+                    </div>
+                </mat-grid-tile>
+                <br>
+                <mat-grid-tile [style.background]="data.errorD ? '#FFCDD2':'#DCEDC8'"
+                    [style.color]="data.errorD ? 'red': 'green'">
+                    <div class="text-inside-grid">
+                        <span style="font-size: 1.5em; font-weight: 600;">
+                            {{ 'SAG.DYNAMIC' | translate }}
+                        </span>
+                        <span style="font-size: 1.8em; font-weight: bold;">
+                            {{data.sagD}}mm
+                        </span>
+                        <span style="font-size: 1em;">
+                            {{data.msgD | translate}}
+                        </span>
+                    </div>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </mat-card-content>
+        <div mat-dialog-actions>
+            <button mat-button mat-dialog-close>{{ 'SAG.CLOSE' | translate }}</button>
+        </div>
+    </div>
+</mat-card>
