@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.24.0 (2025-09-11)
+
+- **update:**
+  - Change results to a dialog
+
 ## 0.23.0 (2025-09-10)
 
 - **cookies:** Add cookies consent
