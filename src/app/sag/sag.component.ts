@@ -64,19 +64,19 @@ export class SagComponent implements OnInit {
 
 	mobileQuery: MediaQueryList;
 
-	type: string;
+	type: string = 'front';
 	sagEIdealMinRear = 30;
 	sagEIdealMaxRear = 40;
 	sagDIdealMinRear = 100;
 	sagDIdealMaxRear = 110;
-	errorSagERear: string;
-	errorSagDRear: string;
+	errorSagERear: string = '';
+	errorSagDRear: string = '';
 	sagEIdealMinFront = 30;
 	sagEIdealMaxFront = 40;
 	sagDIdealMinFront = 60;
 	sagDIdealMaxFront = 70;
-	errorSagEFront: string;
-	errorSagDFront: string;
+	errorSagEFront: string = '';
+	errorSagDFront: string = '';
 
 	msgMorePre = "SAG.MORE_PRE";
 	msgLessPre = "SAG.LESS_PRE";

@@ -17,6 +17,7 @@ import {
 } from "@angular/fire/analytics";
 import { AngularFireAnalyticsModule } from "@angular/fire/compat/analytics";
 import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFireMessagingModule } from '@angular/fire/compat/messaging';
 
 import { VersionCheckService } from "./services/version-check.service";
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
@@ -45,6 +46,11 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAnalyticsModule,
+    AngularFireMessagingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      registrationStrategy: 'registerImmediately',
+    }),
     BrowserAnimationsModule,
     MaterialModule,
     LayoutModule,
@@ -55,14 +61,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         deps: [HttpClient],
       },
     }),
-  NavComponent,
-    ServiceWorkerModule.register("ngsw-worker.js", {
-      enabled: environment.production,
-      // Register the ServiceWorker as soon as the app is stable
-      // or after 30 seconds (whichever comes first).
-      // For easier local testing, register immediately so SwUpdate is ready sooner.
-      registrationStrategy: "registerImmediately",
-    }),
+    NavComponent,
   ],
   providers: [
     VersionCheckService,

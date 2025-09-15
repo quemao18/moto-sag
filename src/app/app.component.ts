@@ -6,6 +6,7 @@ import { AngularFireAnalytics } from "@angular/fire/compat/analytics";
 import { NavComponent } from "./nav/nav.component";
 import { CookieConsentBannerComponent } from './cookie-consent-banner/cookie-consent-banner.component';
 import { CookieConsentService } from './services/cookie-consent.service';
+import { PushNotificationService } from './services/push-notification.service';
 
 @Component({
   selector: "app-root",
@@ -15,6 +16,9 @@ import { CookieConsentService } from './services/cookie-consent.service';
   imports: [
     NavComponent,
     CookieConsentBannerComponent
+  ],
+  providers: [
+    PushNotificationService
   ]
 })
 export class AppComponent implements OnInit {
@@ -23,11 +27,13 @@ export class AppComponent implements OnInit {
     private router: Router,
     public versionCheckService: VersionCheckService,
     private analytics: AngularFireAnalytics,
-    private cookieConsent: CookieConsentService
+    private cookieConsent: CookieConsentService,
+    private pushNotificationService: PushNotificationService
   ) {
     this.cookieConsent.consent$.subscribe(state => {
       if (state?.choices.analytics) {
         this.analytics.logEvent("app_open", { component: "AppComponent" });
+        this.pushNotificationService.requestPermission();
       }
     });
   }
