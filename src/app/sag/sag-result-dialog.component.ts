@@ -1,5 +1,5 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { CommonModule } from '@angular/common';
+
 import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
@@ -14,13 +14,12 @@ import { AngularFireAnalytics } from '@angular/fire/compat/analytics';
     styleUrls: ['./sag-result-dialog.component.css'],
     standalone: true,
     imports: [
-        CommonModule,
-        TranslateModule,
-        MatDialogModule,
-        MatGridListModule,
-        MatCardModule,
-        MaterialModule
-    ],
+    TranslateModule,
+    MatDialogModule,
+    MatGridListModule,
+    MatCardModule,
+    MaterialModule
+],
     animations: [
         trigger('animate', [
             state('*', style({

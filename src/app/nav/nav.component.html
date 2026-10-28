@@ -11,10 +11,14 @@
       <mat-icon>translate</mat-icon>
     </button>
     <mat-menu #menu="matMenu" xPosition="before">
-      <button (click)="changeLang(lang)" *ngFor="let lang of translate.getLangs()" mat-menu-item>
-        <span>{{lang | uppercase }}</span>
-        <mat-icon *ngIf="lang==translate.currentLang">check</mat-icon>
-      </button>
+      @for (lang of translate.getLangs(); track lang) {
+        <button (click)="changeLang(lang)" mat-menu-item>
+          <span>{{lang | uppercase }}</span>
+          @if (lang==translate.currentLang) {
+            <mat-icon>check</mat-icon>
+          }
+        </button>
+      }
     </mat-menu>
     <button mat-icon-button (click)="dark=!dark">
       <mat-icon class="example-icon" inert aria-label="Change theme">
@@ -30,11 +34,11 @@
       [style.marginBottom.px]="mobileQuery.matches ? 0 : 0">
       <mat-nav-list>
         <a (click)="mobileQuery.matches ? snav.close() : ''" mat-list-item routerLinkActive="active" routerLink="/home"
-          href="#">{{ 'HOME.INFO' | translate }}</a>
+        href="#">{{ 'HOME.INFO' | translate }}</a>
         <a (click)="mobileQuery.matches ? snav.close() : ''" mat-list-item routerLinkActive="active"
-          routerLink="/sag/front" href="#">{{ 'SAG.FRONT' | translate }}</a>
+        routerLink="/sag/front" href="#">{{ 'SAG.FRONT' | translate }}</a>
         <a (click)="mobileQuery.matches ? snav.close() : ''" mat-list-item routerLinkActive="active"
-          routerLink="/sag/rear" href="#">{{ 'SAG.REAR' | translate }}</a>
+        routerLink="/sag/rear" href="#">{{ 'SAG.REAR' | translate }}</a>
       </mat-nav-list>
 
       <footer class="footer2">
@@ -48,20 +52,20 @@
           </div>
         </button>
         <br>
-        By <a [style.color]="dark? 'white':''" target="blank" href="https://github.com/quemao18">&#64;quemao18</a>
-      </footer>
+          By <a [style.color]="dark? 'white':''" target="blank" href="https://github.com/quemao18">&#64;quemao18</a>
+        </footer>
 
-    </mat-drawer>
+      </mat-drawer>
 
-    <mat-drawer-content fullscreen>
+      <mat-drawer-content fullscreen>
 
-      <!-- Add Content Here -->
-      <div class="container">
-        <router-outlet></router-outlet>
-      </div>
+        <!-- Add Content Here -->
+        <div class="container">
+          <router-outlet></router-outlet>
+        </div>
 
-    </mat-drawer-content>
+      </mat-drawer-content>
 
-  </mat-drawer-container>
+    </mat-drawer-container>
 
-</div>
+  </div>
