@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PrivacyComponent } from './privacy.component';
 
@@ -8,7 +9,7 @@ describe('PrivacyComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PrivacyComponent]
+      imports: [PrivacyComponent, NoopAnimationsModule]
     });
     fixture = TestBed.createComponent(PrivacyComponent);
     component = fixture.componentInstance;

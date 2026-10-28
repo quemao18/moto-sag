@@ -1,6 +1,6 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { AngularFireAnalytics } from '@angular/fire/compat/analytics';
 import { UntypedFormControl, Validators, FormGroupDirective, NgForm, UntypedFormGroup } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
@@ -35,7 +35,7 @@ import { MaterialModule } from '../material.module';
         ])
     ],
   standalone: true,
-  imports: [CommonModule, RouterModule, TranslateModule, MaterialModule],
+  imports: [RouterModule, TranslateModule, MaterialModule],
 })
 export class HomeComponent {
 
